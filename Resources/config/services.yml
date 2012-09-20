@@ -1,0 +1,7 @@
+parameters:
+    twig.extension.alertify.class: AppVentus\Awesome\AlertifyBundle\Twig\Extension\AlertifyExtension
+services:
+    twig.extension.alertify:
+        class: %twig.extension.alertify.class%
+        tags:
+            - { name: twig.extension }

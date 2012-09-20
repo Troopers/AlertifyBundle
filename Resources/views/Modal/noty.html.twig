@@ -1,0 +1,25 @@
+
+
+
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/jquery.noty.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/layouts/top.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/layouts/topLeft.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/layouts/topRight.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/layouts/bottom.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/layouts/bottomLeft.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/layouts/bottomRight.js')}}"></script>
+<!-- You can add more layouts if you want -->
+
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/js/noty/themes/default.js')}}"></script>
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    
+    noty({text: '{{body|raw}}', type:'{{type}}', layout:'{{layout}}'});
+
+});
+    
+</script>
+
+
