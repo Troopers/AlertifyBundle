@@ -1,21 +1,28 @@
 
 
-<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" {% if static is defined and static == true %}data-backdrop="static" {% endif %}>
   <div class="modal-header">
+    {% if static is not defined or static == false %}
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    {% endif %}
     <h3 id="myModalLabel">{{title}}</h3>
   </div>
   <div class="modal-body">
     {{body|raw}}
   </div>
   <div class="modal-footer">
+  {% if static is not defined or static == false %}
     <button class="{{ button_class }}" data-dismiss="modal" aria-hidden="true">Fermer</button>
+  {% else %}
+    <button onClick="javascript: history.go(-1);" class="{{ button_class }}" aria-hidden="true">Retour</button>
+  {% endif %}
   </div>
 </div>
 
 <script type="text/javascript">
 $(document).ready(function(){
 $('#modal').modal('show');
+$('.{{ button_class }}').focus();
 
 });
     

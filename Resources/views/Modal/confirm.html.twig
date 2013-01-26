@@ -1,0 +1,45 @@
+
+<div class="modal" id="{{ id }}" tabindex="-1" role="dialog" aria-labelledby="{{ title }}" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">{{title}}</h3>
+  </div>
+  <div class="modal-body">
+    {{body|raw}}
+  </div>
+  <div class="modal-footer">
+    <button class="btn {{ cancel_button_class }}" data-dismiss="modal" aria-hidden="true">Fermer</button>
+    <button class="btn {{ confirm_button_class }}" aria-hidden="true">Valider</button>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#{{ id }}').modal({'show':true,'keyboard':true});
+$('#{{ id }} .{{ confirm_button_class }}').focus();
+  $('#{{ id }}').on('hide',function(){
+    $('.confirm-waiting').addClass('confirm');
+    $('.confirm-waiting').removeClass('confirm-waiting');
+    $('#{{ id }}').remove();
+  });
+});
+
+$('#{{ id }} .{{ cancel_button_class }}').click(function(){
+  $('.confirm-waiting').addClass('confirm');
+  $('.confirm-waiting').removeClass('confirm-waiting');
+});
+
+$('#{{ id }} .{{ confirm_button_class }}').click(function(){
+  {% if type == "form" %}
+    $('.confirm-waiting').submit();
+  {% else %}
+    window.location = $('.confirm-waiting').attr('href');
+  {% endif %}
+});
+
+$('#{{ id }}').focus(function(){
+  $('#{{ id }} .{{ confirm_button_class }}').focus();
+});
+</script>
+
+
