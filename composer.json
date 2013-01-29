@@ -1,0 +1,28 @@
+{
+    "name": "appventus/alertify-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony AlertifyBundle",
+    "keywords": ["alert", "bootstrap"],
+    "homepage": "https://github.com/AppVentus/AvAlertifyBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Andrieux (AppVentus)",
+            "email": "paul@appventus.com",
+            "homepage": "http://appventus.com"
+        },
+        {
+            "name": "Leny Bernard (AppVentus)",
+            "email": "leny@appventus.com",
+            "homepage": "http://appventus.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/class-loader": "2.1.*"
+    },
+    "autoload": {
+        "psr-0": { "AppVentus\\Awesome\\AlertifyBundle": "" }
+    },
+    "target-dir": "AppVentus/Awesome/AlertifyBundle",
+    "minimum-stability": "dev"
+}
