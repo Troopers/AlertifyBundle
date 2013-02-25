@@ -8,15 +8,15 @@ namespace AppVentus\Awesome\AlertifyBundle\Twig\Extension;
  */
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Bundle\TwigBundle\Loader\FilesystemLoader;
- 
+
 class AlertifyExtension extends \Twig_Extension
 {
     protected $environment;
-    
-    
+
+
     public function initRuntime(\Twig_Environment $environment)
         {
-       
+
             $this->environment = $environment;
         }
 
@@ -24,18 +24,18 @@ class AlertifyExtension extends \Twig_Extension
     {
         return 'alertify';
     }
-    
+
     public function getFilters()
     {
         return array(
             'alertify' => new \Twig_Filter_Method($this, 'alertifyFilter'),
         );
     }
-    
+
     public function alertifyFilter($session)
     {
         //CALL IT IN YOUR CTLR
-        //$this->container->get('session')->setFlash('modal', array('title' => 'test', 'body'=>'test body', 'button_class'=>'boutonmoyen')); 
+        //$this->container->get('session')->setFlash('modal', array('title' => 'test', 'body'=>'test body', 'button_class'=>'boutonmoyen'));
         $flashes = $session->getFlashes();
         $renders = array();
         foreach($flashes as $key => $flash){
@@ -49,6 +49,11 @@ class AlertifyExtension extends \Twig_Extension
                         $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:noty.html.twig', $flash);
                         $session->removeFlash('noty');
                         unset($flashes['noty']);
+                    break;
+                    case 'toastr':
+                        $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $flash);
+                        $session->removeFlash('toastr');
+                        unset($flashes['toastr']);
                     break;
                     case 'callback':
                         $flash['body'] .= $this->environment->render('AvAwesomeAlertifyBundle:Modal:callback.html.twig', $flash);
@@ -65,7 +70,7 @@ class AlertifyExtension extends \Twig_Extension
         }
         return implode(" ", $renders);
     }
-    
+
 }
 
 ?>

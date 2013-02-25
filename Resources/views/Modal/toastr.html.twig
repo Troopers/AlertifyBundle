@@ -1,0 +1,21 @@
+<script type="text/javascript" src="{{asset('bundles/avawesomealertify/toastr/js/toastr.js')}}"></script>
+<link rel="stylesheet" href="{{asset('bundles/avawesomealertify/toastr/css/toastr.css')}}">
+
+<script type="text/javascript">
+(function() {
+  var delay;
+
+  delay = function(ms, func) {
+    return setTimeout(func, ms);
+  };
+
+  toastr.options = {
+    positionClass: 'toast-{{layout}}'
+  };
+
+  delay({% if timeout is defined %}, timeout : {{timeout}}{% else %} 1000{% endif %} , function() {
+    return toastr.{{type}}('OK', '{{body|raw}}');
+  });
+
+}).call(this);
+</script>

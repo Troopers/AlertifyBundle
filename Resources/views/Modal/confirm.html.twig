@@ -14,7 +14,6 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function(){
   $('#{{ id }}').modal({'show':true,'keyboard':true});
 $('#{{ id }} .{{ confirm_button_class }}').focus();
   $('#{{ id }}').on('hide',function(){
@@ -22,7 +21,6 @@ $('#{{ id }} .{{ confirm_button_class }}').focus();
     $('.confirm-waiting').removeClass('confirm-waiting');
     $('#{{ id }}').remove();
   });
-});
 
 $('#{{ id }} .{{ cancel_button_class }}').click(function(){
   $('.confirm-waiting').addClass('confirm');
