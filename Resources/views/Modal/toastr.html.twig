@@ -14,7 +14,7 @@
   };
 
   delay({% if timeout is defined %}, timeout : {{timeout}}{% else %} 1000{% endif %} , function() {
-    return toastr.{{type}}('OK', '{{body|raw}}');
+    return toastr.{{type}}('{{body|raw}}','OK');
   });
 
 }).call(this);
