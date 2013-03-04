@@ -1,8 +1,8 @@
-$('form.confirm').live('submit',function(e){
+$(document).on('submit','form.confirm',function(e){
   smartConfirm(e,this,'form');
 });
 
-$('a.confirm').live('click',function(e){
+$(document).on('click','a.confirm',function(e){
   smartConfirm(e,this,'a');
 });
 
@@ -13,7 +13,7 @@ function smartConfirm(e,referer,type){
   e.preventDefault();
   $(referer).removeClass('confirm');
   $(referer).addClass('confirm-waiting');
-  $.post(confirmUrl, 
+  $.post(confirmUrl,
     {
       title:$(referer).attr('data-title'),
       body:$(referer).attr('data-body'),
