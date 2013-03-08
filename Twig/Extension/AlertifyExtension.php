@@ -62,6 +62,7 @@ class AlertifyExtension extends \Twig_Extension
                         $renders[$key] = $this->alertifyFilter($session);
                     break;
                 default:
+                if(is_array($flash))
                         $renders[$key] = $this->environment->render($key.'.html.twig',$flash);
                         $session->removeFlash($key);
                         unset($flashes[$key]);

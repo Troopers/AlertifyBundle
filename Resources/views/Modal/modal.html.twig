@@ -1,13 +1,13 @@
 
 
-<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" {% if static is defined and static == true %}data-backdrop="static" {% endif %}>
+<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" {% if width is defined %}style="width: {{width}};"{% endif %} {% if static is defined and static == true %}data-backdrop="static" {% endif %}>
   <div class="modal-header">
     {% if static is not defined or static == false %}
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     {% endif %}
     <h3 id="myModalLabel">{{title}}</h3>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" id="modal-body">
     {{body|raw}}
   </div>
   <div class="modal-footer">

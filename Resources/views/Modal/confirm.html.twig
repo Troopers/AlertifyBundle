@@ -29,7 +29,11 @@ $('#{{ id }} .{{ cancel_button_class }}').click(function(){
 
 $('#{{ id }} .{{ confirm_button_class }}').click(function(){
   {% if type == "form" %}
-    $('.confirm-waiting').submit();
+  var form = $('.confirm-waiting');
+  form.removeClass('confirm-waiting');
+    form.submit();
+    $('#{{ id }}').modal('hide')
+
   {% else %}
     window.location = $('.confirm-waiting').attr('href');
   {% endif %}
