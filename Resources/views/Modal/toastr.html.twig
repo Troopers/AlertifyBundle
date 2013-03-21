@@ -13,7 +13,7 @@
     positionClass: 'toast-{{layout}}'
   };
 
-  delay({% if timeout is defined %}, timeout : {{timeout}}{% else %} 1000{% endif %} , function() {
+  delay({% if timeout is defined and timeout != null %} {{timeout}}{% else %} 1000{% endif %} , function() {
     return toastr.{{type}}('{{body|raw}}','OK');
   });
 
