@@ -3,8 +3,8 @@ $(document).ready(function() {
     createLoader('#canvasloader-container');
 
     $(document).on('click', '[data-alertify]', function(event) {
-        $('#canvasloader-container').fadeIn();
         event.preventDefault();
+        $('#canvasloader-container').fadeIn();
         $("alertify-container").attr("data-update-effect", "show");
         $("alertify-container").attr("data-new-effect", "show");
         var params = getParams(this);
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 body: $(element).attr('data-body') ? $(element).attr('data-body'):$(element).attr('data-body-target') ? $($(element).attr('data-body-target')).html():"",
                 button_class: $(element).attr('data-button') ? $(element).attr('data-button'):"",
                 width: $(element).attr('data-width') ? $(element).attr('data-button'):"",
-                static: $(element).attr('data-static') ? "true":null
+                static: $(element).attr('data-static') ? "true":""
             }
         }else if(type == "noty" || type == "toastr"){
             var params = {
@@ -42,7 +42,7 @@ $(document).ready(function() {
                 body: $(element).attr('data-body') ? $(element).attr('data-body'):"",
                 type: $(element).attr('data-type') ? $(element).attr('data-type'):"",
                 layout: $(element).attr('data-layout') ? $(element).attr('data-layout'):"",
-                timeout: $(element).attr('data-timeout') ? $(element).attr('data-timeout'):null
+                timeout: $(element).attr('data-timeout') ? $(element).attr('data-timeout'):""
             }
         }else{
                 alert("Il semble s'êre produit une erreur");
