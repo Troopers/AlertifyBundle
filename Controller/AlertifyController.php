@@ -24,8 +24,8 @@ class AlertifyController extends Controller {
             'title'=>$request->get('title'),
             'body'=>$request->get('body'),
             'id'=>$request->get('id').rand(1,100)."-modal",
-            'cancel_button_class'=>"btn-cancel",
-            'confirm_button_class'=>"btn-primary",
+            'cancel_button_class'=>$request->get('cancel_button_class', "btn-cancel"),
+            'confirm_button_class'=>$request->get('confirm_button_class', "btn-primary"),
             'type' => $request->get('type')
         );
     }/**
@@ -38,7 +38,7 @@ class AlertifyController extends Controller {
         foreach($request->request->all() as $name => $option){
             $options[$name] = $option;
         }
-        $this->get('session')->setFlash($request->get('main_type'), $options); 
+        $this->get('session')->setFlash($request->get('main_type'), $options);
         return array();
     }
 }
