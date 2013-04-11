@@ -49,7 +49,7 @@ class AlertifyExtension extends \Twig_Extension
     public function alertifyFilter($session)
     {
         //CALL IT IN YOUR CTLR
-        $flashes = $session->getFlashBag()->all();
+        $flashes = $session->getFlashes();
 
         $renders = array();
         foreach ($flashes as $key => $flash) {
