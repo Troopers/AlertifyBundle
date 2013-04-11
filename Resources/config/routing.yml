@@ -1,0 +1,4 @@
+av_awesome_alertify:
+    resource: "@AvAwesomeAlertifyBundle/Controller/"
+    type:     annotation
+    prefix:   /
