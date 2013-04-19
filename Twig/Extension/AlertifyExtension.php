@@ -56,37 +56,27 @@ class AlertifyExtension extends \Twig_Extension
             switch ($key) {
                 case 'modal':
                     $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:modal.html.twig',$flash);
-                    $session->removeFlash('modal');
-                    unset($flashes['modal']);
                 break;
                 case 'noty':
                     $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:noty.html.twig', $flash);
-                    $session->removeFlash('noty');
-                    unset($flashes['noty']);
                 break;
                 case 'toastr':
                     $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $flash);
-                    $session->removeFlash('toastr');
-                    unset($flashes['toastr']);
                 break;
                 case 'callback':
                     $flash['body'] .= $this->environment->render('AvAwesomeAlertifyBundle:Modal:callback.html.twig', $flash);
-                    $session->removeFlash('callback');
-                    $session->setFlash($flash['type'], $flash);
+                    $session->getFlashBag->add($flash['type'], $flash);
                     $renders[$key] = $this->alertifyFilter($session);
                 break;
                 default:
                     if (is_array($flash)) {
-                            $renders[$key] = $this->environment->render($key.'.html.twig',$flash);
-                            $session->removeFlash($key);
+                        $value = array('type' => $key, 'layout' => 'bottom-left' ,'body' => $flash[0]);
+                        $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $value);
                     }
                     if (! is_array($flash)) {
                         $value = array('type' => 'success', 'layout' => 'bottom-left' ,'body' => $flash);
                         $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $value);
-                        $session->removeFlash($key);
                     }
-
-                    unset($flashes[$key]);
                 break;
             }
         }
