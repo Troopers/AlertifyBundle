@@ -17,18 +17,20 @@ Le formulaire, ou le lien en question doit avoir les attributs ci dessous :
 - class="confirm"
 - data-title="Êtes vous sur ?"
 - data-body="Cette action irreversible ! Souhaitez vous confirmer ?"
+- data-cancel-button-class="btn-cancel"
+- data-confirm-button-class="btn-primary"
 
-Voici un exemple : 
+Voici un exemple :
 
-	<form action="/your_url" data-title="Êtes vous sur ?" data-body="Cette action irreversible ! Souhaitez vous confirmer ?" class="confirm" method="post" {{ form_enctype(delete_form) }}>
-		{{ form_errors(delete_form) }}  
+	<form action="/your_url" class="confirm" data-title="Êtes vous sur ?" data-body="Cette action irreversible ! Souhaitez vous confirmer ?" data-cancel-button-class="cancel" data-confirm-button-class="danger" method="post" {{ form_enctype(delete_form) }}>
+		{{ form_errors(delete_form) }}
 		{{ form_widget(delete_form) }}
         <input type="submit" class="btn btn-danger span4" style="width:100%" value="Supprimer définitvement"/>
     </form>
 
-ou pour un lien : 
+ou pour un lien :
 
-<a href="/your_url" class="btn btn-mini btn-danger confirm" data-title="Êtes vous sur de vouloir faire ca&nbsp;?" data-body="BLABLA">Dépublier</a>
+<a href="/your_url" class="btn btn-mini btn-danger confirm" data-title="Êtes vous sur de vouloir faire ca&nbsp;?" data-body="BLABLA" data-cancel-button-class="cancel" data-confirm-button-class="danger">Dépublier</a>
 
 Ajoutez le fichier javascript dans votre template en spécifiant la variable confirmUrl comme ceci :
 

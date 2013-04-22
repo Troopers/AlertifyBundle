@@ -1,7 +1,7 @@
 {% if args is defined %}
-{% render action with args %}
+{{ render(controller(action, args)) }}
 {% else %}
-{% render action %}
+{{ render(controller(action)) }}
 {% endif %}
 
 

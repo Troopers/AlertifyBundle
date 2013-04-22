@@ -17,6 +17,8 @@ function smartConfirm(e,referer,type){
     {
       title:$(referer).attr('data-title'),
       body:$(referer).attr('data-body'),
+      cancel_button_class:$(referer).attr('data-cancel-button-class'),
+      confirm_button_class:$(referer).attr('data-confirm-button-class'),
       id:$(referer).attr('id'),
       type:type
     },
