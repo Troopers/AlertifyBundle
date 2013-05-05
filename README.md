@@ -9,7 +9,8 @@ What is the point ?
 
 This bundle allow you to easily turn your poor lonely sad notifications into modals from 
 * TwitterBootstrap (http://twitter.github.com/bootstrap/javascript.html#modals) or
-* Noty (http://needim.github.com/noty/)
+* Noty (http://needim.github.com/noty/) or
+* Toastr (https://github.com/CodeSeven/toastr)
 
 
 Installation
@@ -57,7 +58,7 @@ Now, anywhere in your controllers you can put your alert in the flash session an
 Options
 ------------
 
-### Noty
+### Noty (For toastr, just replace noty by toastr)
 
 To call a noty alert, just use a flash named 'noty':
 
@@ -105,3 +106,9 @@ To work, the called action have to render a view. It's very usefull to include a
        
 This type is very simple to use, just call the callback alery, and in the options define "type" with the final alert you want, the action with the action you want call, and other options specific to the alery you choose.
 
+
+Confirm modal
+------------
+
+After a link's clic or form's submission, we sometimes want to prompt the user to be sure he understood what he did.
+You can make it as a simply way by following the doc here : (https://github.com/AppVentus/AvAlertifyBundle/blob/master/README_Confirm.md)
