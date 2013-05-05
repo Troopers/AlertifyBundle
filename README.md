@@ -1,7 +1,7 @@
 AvAlertifyBundle
 =============
 
-Part of the Awesome AppVentus Utils package
+Go here to read more about this plugin : (http://appventus.com/blog/les-notifications-ou-comment-ameliorer-la-user-experience-grace-a-noty-et-aux-modals-en-2-minutes)
 
 What is the point ?
 -------
