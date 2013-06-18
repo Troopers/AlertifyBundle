@@ -29,5 +29,11 @@
         "psr-0": { "AppVentus\\Awesome\\AlertifyBundle": "" }
     },
     "target-dir": "AppVentus/Awesome/AlertifyBundle",
-    "minimum-stability": "dev"
+
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.3.x-dev"
+        }
+    }
 }
