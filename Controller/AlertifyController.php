@@ -6,9 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use AppVentus\Awesome\AlertifyBundle\Twig\Extension\AlertifyExtension;
-
-use AppVentus\Awesome\ShortcutsBundle\Utils\Utils ;
 
 /**
  * AdManager controller.
@@ -30,9 +27,9 @@ class AlertifyController extends Controller
         return array(
             'title'                => $request->get('title'),
             'body'                 => $request->get('body'),
-            'id'                   => $request->get('id').rand(1,100)."-modal",
-            'cancel_button_class'  => $request->get('cancel_button_class', "btn-cancel"),
-            'confirm_button_class' => $request->get('confirm_button_class', "btn-primary"),
+            'id'                   => $request->get('id').rand(1,100).'-modal',
+            'cancel_button_class'  => $request->get('cancel_button_class', 'btn-cancel'),
+            'confirm_button_class' => $request->get('confirm_button_class', 'btn-primary'),
             'type'                 => $request->get('type')
         );
     }
