@@ -53,6 +53,7 @@ class AlertifyExtension extends \Twig_Extension
 
         $renders = array();
         foreach ($flashes as $key => $flash) {
+            error_log(print_r($flash, true));
             switch ($key) {
                 case 'modal':
                     $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:modal.html.twig',$flash);
@@ -61,6 +62,10 @@ class AlertifyExtension extends \Twig_Extension
                     $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:noty.html.twig', $flash);
                 break;
                 case 'toastr':
+                    if (is_array($flash)) {
+                        $flash = $flash[0];
+                    }
+
                     $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $flash);
                 break;
                 case 'callback':
@@ -72,8 +77,7 @@ class AlertifyExtension extends \Twig_Extension
                     if (is_array($flash)) {
                         $value = array('type' => $key, 'layout' => 'bottom-left' ,'body' => $flash[0]);
                         $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $value);
-                    }
-                    if (! is_array($flash)) {
+                    } else {
                         $value = array('type' => 'success', 'layout' => 'bottom-left' ,'body' => $flash);
                         $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $value);
                     }
