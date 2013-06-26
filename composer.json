@@ -15,14 +15,25 @@
             "name": "Leny Bernard (AppVentus)",
             "email": "leny@appventus.com",
             "homepage": "http://appventus.com"
+        },
+        {
+            "name": "Pierre Jolly (AppVentus)",
+            "email": "pierre@appventus.com",
+            "homepage": "http://appventus.com"
         }
     ],
     "require-dev": {
-        "symfony/class-loader": "2.1.*"
+        "symfony/class-loader": "~2.1"
     },
     "autoload": {
         "psr-0": { "AppVentus\\Awesome\\AlertifyBundle": "" }
     },
     "target-dir": "AppVentus/Awesome/AlertifyBundle",
-    "minimum-stability": "dev"
+
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.3.x-dev"
+        }
+    }
 }

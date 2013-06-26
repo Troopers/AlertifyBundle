@@ -2,8 +2,7 @@
 
 namespace AppVentus\Awesome\AlertifyBundle\Twig\Extension;
 
-use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Bundle\TwigBundle\Loader\FilesystemLoader;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * AlertifyExtension
@@ -46,40 +45,27 @@ class AlertifyExtension extends \Twig_Extension
      * @param Session $session
      * @return string
      */
-    public function alertifyFilter($session)
+    public function alertifyFilter(Session $session)
     {
-        //CALL IT IN YOUR CTLR
         $flashes = $session->getFlashBag()->all();
 
         $renders = array();
-        foreach ($flashes as $key => $flash) {
-            error_log(print_r($flash, true));
-            switch ($key) {
-                case 'modal':
-                    $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:modal.html.twig',$flash);
-                break;
-                case 'noty':
-                    $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:noty.html.twig', $flash);
-                break;
-                case 'toastr':
-                    if (is_array($flash)) {
-                        $flash = $flash[0];
-                    }
-
-                    $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $flash);
-                break;
+        foreach ($flashes as $type => $flash) {
+            switch ($type) {
                 case 'callback':
-                    $flash['body'] .= $this->environment->render('AvAwesomeAlertifyBundle:Modal:callback.html.twig', $flash);
-                    $session->getFlashBag->add($flash['type'], $flash);
-                    $renders[$key] = $this->alertifyFilter($session);
+                    foreach ($flash as $key => $currentFlash) {
+                        $currentFlash['body'] .= $this->environment->render('AvAwesomeAlertifyBundle:Modal:callback.html.twig', $currentFlash);
+                        $session->getFlashBag()->add($type, $currentFlash);
+                        $renders[$type . $key] = $this->alertifyFilter($session);
+                    }
                 break;
+
+                case 'modal':
+                case 'toastr':
+                case 'noty':
                 default:
-                    if (is_array($flash)) {
-                        $value = array('type' => $key, 'layout' => 'bottom-left' ,'body' => $flash[0]);
-                        $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $value);
-                    } else {
-                        $value = array('type' => 'success', 'layout' => 'bottom-left' ,'body' => $flash);
-                        $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $value);
+                    foreach ($flash as $key => $currentFlash) {
+                        $renders[$type . $key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:' . $type . '.html.twig', $currentFlash);
                     }
                 break;
             }
