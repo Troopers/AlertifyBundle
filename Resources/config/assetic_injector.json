@@ -1,0 +1,9 @@
+{
+    "require_all":
+    {
+        "javascripts":
+        {
+            "0": "@AvAwesomeAlertifyBundle/Resources/public/js/confirm.js"
+        }
+    }
+}
