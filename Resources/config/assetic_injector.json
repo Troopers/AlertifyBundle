@@ -3,7 +3,7 @@
     {
         "javascripts":
         {
-            "0": "@AvAwesomeAlertifyBundle/Resources/public/js/confirm.js"
+            "foot": "@AvAwesomeAlertifyBundle/Resources/public/js/confirm.js"
         }
     }
 }
