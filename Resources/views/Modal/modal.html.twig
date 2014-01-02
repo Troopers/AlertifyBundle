@@ -1,21 +1,25 @@
-<div class="modal hide fade " id="alertify-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" {% if width is defined and width != ""%}style="width: {{width|replace({'px':''})}}px;margin-left:{{width|replace({'px':''}) / 2 * -1}}px"{% endif %} {% if static is defined and static == true %}data-backdrop="static" {% endif %}>
-  <div class="modal-header">
-    {% if static is not defined or static == false %}
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    {% endif %}
-    <h3 id="myModalLabel">{{title}}</h3>
-  </div>
-  <div class="modal-body" id="modal-body">
-    {{body|raw}}
-  </div>
-  <div class="modal-footer">
-  {% if static is not defined or static == false %}
-    <button class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" data-dismiss="modal" aria-hidden="true">Fermer</button>
-  {% else %}
-    <button onClick="javascript: history.go(-1);" class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" aria-hidden="true">Retour</button>
-  {% endif %}
-  </div>
-</div>
+<div class="modal fade" id="alertify-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                {% if static is not defined or static == false %}
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                {% endif %}
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+                {{body|raw}}
+            </div>
+            <div class="modal-footer">
+                {% if static is not defined or static == false %}
+                    <button class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" data-dismiss="modal" aria-hidden="true">Fermer</button>
+                {% else %}
+                    <button onClick="javascript: history.go(-1);" class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" aria-hidden="true">Retour</button>
+                {% endif %}
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
