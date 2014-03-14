@@ -15,12 +15,13 @@ function smartConfirm(e,referer,type){
   $(referer).addClass('confirm-waiting');
   $.post(confirmUrl,
     {
-      title:$(referer).attr('data-title'),
-      body:$(referer).attr('data-body'),
-      cancel_button_class:$(referer).attr('data-cancel-button-class'),
-      confirm_button_class:$(referer).attr('data-confirm-button-class'),
-      id:$(referer).attr('id'),
-      type:type
+      title: $(referer).attr('data-title'),
+      body: $(referer).attr('data-body'),
+      confirm_callback: $(referer).attr('data-confirm-callback'),      
+      cancel_button_class: $(referer).attr('data-cancel-button-class'),
+      confirm_button_class: $(referer).attr('data-confirm-button-class'),
+      id: $(referer).attr('id'),
+      type: type
     },
     function(data){
       $("body").append(data);

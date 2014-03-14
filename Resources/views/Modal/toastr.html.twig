@@ -1,6 +1,12 @@
 <script type="text/javascript" src="{{asset('bundles/avawesomealertify/toastr/js/toastr.js')}}"></script>
 <link rel="stylesheet" href="{{asset('bundles/avawesomealertify/toastr/css/toastr.css')}}">
 
+{% if executeNotification is not defined %}
+    {% set executeNotification = true %}
+{% endif %}
+
+{# execute the notification only if we want an automatic notification #}
+{% if executeNotification == true %}
 <script type="text/javascript">
 (function() {
   var delay;
@@ -19,3 +25,4 @@
 
 }).call(this);
 </script>
+{% endif %}
