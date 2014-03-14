@@ -1,4 +1,3 @@
-
 <div class="modal" id="{{ id }}" tabindex="-1" role="dialog" aria-labelledby="{{ title }}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -11,7 +10,10 @@
             </div>
             <div class="modal-footer">
                 <button class="btn {{ cancel_button_class }}" data-dismiss="modal" aria-hidden="true">Fermer</button>
-                <button class="btn {{ confirm_button_class }}" aria-hidden="true">Valider</button>
+                <button
+                    class="btn {{ confirm_button_class }}"
+                    aria-hidden="true"
+                    >Valider</button>
             </div>
         </div>
     </div>
@@ -31,6 +33,8 @@ $('#{{ id }} .{{ cancel_button_class }}').click(function(){
   $('.confirm-waiting').removeClass('confirm-waiting');
 });
 
+{# if no callback were given, we submit or go to the url of given as parameter #}
+{% if confirmCallback == null %}
 $('#{{ id }} .{{ confirm_button_class }}').click(function(){
   {% if type == "form" %}
   var form = $('.confirm-waiting');
@@ -42,6 +46,12 @@ $('#{{ id }} .{{ confirm_button_class }}').click(function(){
     window.location = $('.confirm-waiting').attr('href');
   {% endif %}
 });
+{% else %}
+$('#{{ id }} .{{ confirm_button_class }}').click(function(){
+    {{ confirmCallback }};
+    $('#{{ id }}').modal('hide');
+});
+{% endif %}
 
 $('#{{ id }}').focus(function(){
   $('#{{ id }} .{{ confirm_button_class }}').focus();
