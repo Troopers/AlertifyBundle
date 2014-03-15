@@ -6,16 +6,9 @@
 <link href="{{asset('bundles/avawesomealertify/noty/css/jquery.noty.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('bundles/avawesomealertify/noty/css/noty_theme_'~theme~'.css')}}" rel="stylesheet" type="text/css" />
 
-{% if executeNotification is not defined %}
-    {% set executeNotification = true %}
-{% endif %}
-
-{# execute the notification only if we want an automatic notification #}
-{% if executeNotification == true %}
 <script type="text/javascript">
 $(document).ready(function(){
     noty({text: "{{ body|raw|trans({}, translationDomain|default('messages')) }}", type:"{{type}}", layout:"{{layout}}", theme: "noty_theme_{{theme}}"{% if timeout is defined %}, timeout : {{timeout}}{% endif %} });
 });
 </script>
-{% endif %}
 
