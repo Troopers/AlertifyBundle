@@ -20,6 +20,14 @@ Le formulaire, ou le lien en question doit avoir les attributs ci dessous :
 - data-cancel-button-class="btn-cancel"
 - data-confirm-button-class="btn-primary"
 
+Si le formulaire ou lien possède la propriété suivante:
+ 
+- confirm-callback="someFunctionToRunIfTheConfirmButtonIsClicked();"
+
+Le lien href du lien ne sera pas automatiquement suivi (ou si c'est un formulaire, il ne sera pas soumis).
+A la place, la fonction js sera exécutée.
+
+
 Voici un exemple :
 
 	<form action="/your_url" class="confirm" data-title="Êtes vous sur ?" data-body="Cette action irreversible ! Souhaitez vous confirmer ?" data-cancel-button-class="cancel" data-confirm-button-class="danger" method="post" {{ form_enctype(delete_form) }}>
