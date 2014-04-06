@@ -98,6 +98,18 @@ To work, the called action have to render a view. It's very usefull to include a
        
 This type is very simple to use, just call the callback alery, and in the options define "type" with the final alert you want, the action with the action you want call, and other options specific to the alery you choose.
 
+Ajax mode
+-----------
+
+We told you to add the alertify filter in your layout. This is great but what if you want to use ajax in your application ?
+
+Actually, this library is not really made for it but you can simply add this part of code to trigger alerts in your new ajax content :
+
+
+    {% if app.request.isXmlHttpRequest %}
+        {{ app.session | alertify|raw }}
+    {% endif %}
+
 
 Confirm modal
 ------------
