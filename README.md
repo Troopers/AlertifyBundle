@@ -16,26 +16,18 @@ This bundle allow you to easily turn your poor lonely sad notifications into mod
 Installation
 ------------
 
-First, add these in your deps:
+First, require it thanks to composer:
 
-    [AvAlertifyBundle]
-        git=https://github.com/AppVentus/AvAlertifyBundle.git
-        target=bundles/AppVentus/Awesome/AvAlertifyBundle
+    composer.phar require appventus/alertify-bundle:dev-master
 
-And never forget to declare it in your AppKernel.php:
+
+Add it in your AppKernel.php:
     
     public function registerBundles() {
         $bundles = array(
             [...]
             new AppVentus\Awesome\AlertifyBundle\AvAwesomeAlertifyBundle(),
             [...]
-
-And in your autoload.php
-    
-    $loader->registerNamespaces(array(
-        [...]
-        'AppVentus' => __DIR__ . '/../vendor',
-        [..]
 
 Then, just publish your assets, annnnnnd it's done !
 
@@ -112,7 +104,3 @@ Confirm modal
 
 After a link's clic or form's submission, we sometimes want to prompt the user to be sure he understood what he did.
 You can make it as a simply way by following the doc here : (https://github.com/AppVentus/AvAlertifyBundle/blob/master/README_Confirm.md)
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AppVentus/avalertifybundle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
