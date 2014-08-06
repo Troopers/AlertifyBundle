@@ -63,9 +63,7 @@ class AlertifyExtension extends \Twig_Extension
                 case 'modal':
                 case 'toastr':
                 case 'noty':
-                    foreach ($flash as $key => $currentFlash) {
-                        $renders[$type . $key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:' . $type . '.html.twig', $currentFlash);
-                    }
+                        $renders[$type] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:' . $type . '.html.twig', $flash);
                 break;
                 default:
                     foreach ($flash as $key => $currentFlash) {
