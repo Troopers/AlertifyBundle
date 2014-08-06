@@ -40,7 +40,7 @@ It's amazingly easy to use, just follow the following:
 Add this block at the end of your twig layout:
 
      {% block alertify %}
-        {{ app.session | alertify|raw }}
+        {{ app.session|alertify|raw }}
      {% endblock %}
 
 Now, anywhere in your controllers you can put your alert in the flash session and enjoy.
@@ -54,7 +54,7 @@ Options
 
 To call a noty alert, just use a flash named 'noty':
 
-    $this->get('session')->setFlash('noty',array('type'=>'success', 'layout'=>'bottom' ,'body'=>"<div>OMG, that's amazing !</div>"));
+    $this->get('session')->getFlashBag()->set('noty',array('type'=>'success', 'layout'=>'bottom' ,'body'=>"<div>OMG, that's amazing !</div>"));
 
 as you see, you can pass some arguments tu customize the noty, availables ones are:
 
@@ -74,7 +74,7 @@ as you see, you can pass some arguments tu customize the noty, availables ones a
 
 To call a modal box, just use a flash named 'modal':
 
-    $this->get('session')->setFlash("modal", array('title'=>"Wow",'button_class'=>"btn btn-primary btn-large", "body"=> "<div>Some info</div>"));
+    $this->get('session')->getFlashBag()->set("modal", array('title'=>"Wow",'button_class'=>"btn btn-primary btn-large", "body"=> "<div>Some info</div>"));
 
 as you see, you can pass some arguments tu customize the modal, availables ones are:
 
@@ -94,7 +94,7 @@ There is a final type of Alert you can call, the callback
 Callbach allow you to call any action in you project, thats awesome if you want put dynamic content in your alery.
 To work, the called action have to render a view. It's very usefull to include a form in a modal for exemple.
 
-    $this->get('session')->setFlash('callback', array('type'=>'modal','title' => 'Wow', 'action'=>'AcmeBundle:Default:hello', 'button_class'=>'btn btn-primary btn-large', 'body'=>'<p>Yeah that's crazy !</p>'));  
+    $this->get('session')->getFlashBag()->set('callback', array('type'=>'modal','title' => 'Wow', 'action'=>'AcmeBundle:Default:hello', 'button_class'=>'btn btn-primary btn-large', 'body'=>'<p>Yeah that's crazy !</p>'));  
        
 This type is very simple to use, just call the callback alery, and in the options define "type" with the final alert you want, the action with the action you want call, and other options specific to the alery you choose.
 
@@ -107,7 +107,7 @@ Actually, this library is not really made for it but you can simply add this par
 
 
     {% if app.request.isXmlHttpRequest %}
-        {{ app.session | alertify|raw }}
+        {{ app.session|alertify|raw }}
     {% endif %}
 
 
