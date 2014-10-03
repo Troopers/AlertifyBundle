@@ -2,20 +2,37 @@
 <link rel="stylesheet" href="{{asset('bundles/avawesomealertify/toastr/css/toastr.css')}}">
 
 <script type="text/javascript">
-(function() {
-  var delay;
+    (function() {
+      var delay;
 
-  delay = function(ms, func) {
-    return setTimeout(func, ms);
-  };
+      delay = function(ms, func) {
+        return setTimeout(func, ms);
+    };
 
-  toastr.options = {
-    positionClass: 'toast-{{ layout }}'
-  };
+    //
+    toastr.options = {
+        positionClass: 'toast-{{ layout }}'
+    };
 
-  delay({% if timeout is defined and timeout != null %} {{ timeout }}{% else %} 1000{% endif %} , function() {
-    return toastr.{{ type }}("{{ body|raw|trans({}, translationDomain|default('messages')) }}","{{ ("alert."~type~".label")|trans({}, translationDomain|default('messages')) }}");
-  });
+    //Available options
+    // toastr.options = {
+    //   "closeButton": false,
+    //   "debug": false,
+    //   "positionClass": "toast-top-right", //top-right, top-left, top-full-width, bottom-right, bottom-left, bottom-full-width
+    //   "onclick": null,
+    //   "showDuration": "20000",
+    //   "hideDuration": "1000",
+    //   "timeOut": "5000",
+    //   "extendedTimeOut": "1000",
+    //   "showEasing": "swing",
+    //   "hideEasing": "linear",
+    //   "showMethod": "fadeIn",
+    //   "hideMethod": "fadeOut"
+    // }
+
+    delay({% if timeout is defined and timeout != null %} {{ timeout }}{% else %} 1000{% endif %} , function() {
+        return toastr.{{ type }}("{{ body|raw|trans({}, translationDomain|default('messages')) }}","{{ ("alert."~type~".label")|trans({}, translationDomain|default('messages')) }}");
+    });
 
 }).call(this);
 </script>

@@ -18,11 +18,20 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('av_awesome_alertify');
+        $rootNode = $treeBuilder->root('av_awesome_alertify');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
+
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->scalarNode('engine')->defaultValue('toastr')->cannotBeEmpty()->end()
+                ->scalarNode('layout')->defaultValue('topRight')->cannotBeEmpty()->end()
+                ->scalarNode('translationDomain')->defaultValue('flash')->cannotBeEmpty()->end()
+            ->end()
+        ->end();
 
         return $treeBuilder;
     }

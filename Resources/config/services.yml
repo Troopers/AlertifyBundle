@@ -3,5 +3,7 @@ parameters:
 services:
     twig.extension.alertify:
         class: %twig.extension.alertify.class%
+        arguments:
+            - "%av_awesome_alertify%"
         tags:
             - { name: twig.extension }

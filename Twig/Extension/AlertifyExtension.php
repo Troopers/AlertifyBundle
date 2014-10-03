@@ -6,12 +6,19 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * AlertifyExtension
- *
- * @author Paul Andrieux
  */
 class AlertifyExtension extends \Twig_Extension
 {
     protected $environment;
+    protected $defaultParameters;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function __construct($defaultParameters)
+    {
+        $this->defaultParameters = $defaultParameters;
+    }
 
     /**
      * {@inheritDoc}
@@ -35,46 +42,39 @@ class AlertifyExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'alertify' => new \Twig_Filter_Method($this, 'alertifyFilter'),
+            'alertify' => new \Twig_Filter_Method($this, 'alertifyFilter', array('needs_environment' => true, 'is_safe' => array('html')))
         );
     }
 
     /**
      * Alertify filter
      *
-     * @param Session $session
+     * @param  Session $session
      * @return string
      */
-    public function alertifyFilter(Session $session)
+    public function alertifyFilter($environment, Session $session)
     {
         $flashes = $session->getFlashBag()->all();
 
         $renders = array();
         foreach ($flashes as $type => $flash) {
-            switch ($type) {
-                case 'callback':
-                    foreach ($flash as $key => $currentFlash) {
-                        $currentFlash['body'] .= $this->environment->render('AvAwesomeAlertifyBundle:Modal:callback.html.twig', $currentFlash);
-                        $session->getFlashBag()->add($type, $currentFlash);
-                        $renders[$type . $key] = $this->alertifyFilter($session);
+            if ($type == "callback") {
+                foreach ($flash as $key => $currentFlash) {
+                    $currentFlash['body'] .= $environment->render('AvAwesomeAlertifyBundle:Modal:callback.html.twig', $currentFlash);
+                    $session->getFlashBag()->add($currentFlash['engine'], $currentFlash);
+                    $renders[$type . $key] = $this->alertifyFilter($session);
+                }
+            } else {
+                foreach ($flash as $key => $content) {
+                    if (is_array($content)) {
+                        $parameters = array_merge($this->defaultParameters, $content);
+                    } else {
+                        $parameters = array_merge($this->defaultParameters, array('body' => $content));
                     }
-                break;
 
-                case 'modal':
-                case 'toastr':
-                case 'noty':
-                    foreach ($flash as $key => $currentFlash) {
-                        $renders[$type . $key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:' . $type . '.html.twig', $currentFlash);
-                    }
-                break;
-                default:
-                    foreach ($flash as $key => $currentFlash) {
-                        if (!is_array($currentFlash)) {
-                            $currentFlash = array('type' => 'success', 'layout' => 'bottom-left' ,'body' => $currentFlash);
-                        }
-                        $renders[$key] = $this->environment->render('AvAwesomeAlertifyBundle:Modal:toastr.html.twig', $currentFlash);
-                    }
-                break;
+                    $parameters['type'] = $type;
+                    $renders[$type . $key] = $environment->render('AvAwesomeAlertifyBundle:Modal:'.$parameters['engine'].'.html.twig', $parameters);
+                }
             }
         }
 
