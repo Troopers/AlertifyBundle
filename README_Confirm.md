@@ -1,46 +1,51 @@
-Boite de dialogue Modal :
+Confirm Modal :
 =========
 
-AlertifyBundle permet de générer des boites de dialogues de confirmation lorsque vous voulez protéger un formulaire ou un lien.
+AlertifyBundle eases the confirm dialog you may use when protecting link or form.
 
-Installation:
+## Installation:
 
-Déclarez les routes du controleur AlertifyController en ajoutant ceci dans votre fichier routing.yml :
+Add this to your routing.yml :
 
 	AvAwesomeAlertifyBundle:
 	    resource: "@AvAwesomeAlertifyBundle/Controller/"
 	    type:     annotation
 	    prefix:   /
 
-Le formulaire, ou le lien en question doit avoir les attributs ci dessous :
+Add this to your template :
 
-- class="confirm"
-- data-title="Êtes vous sur ?"
-- data-body="Cette action irreversible ! Souhaitez vous confirmer ?"
-- data-cancel-button-class="btn-cancel"
-- data-confirm-button-class="btn-primary"
-
-Si le formulaire ou lien possède la propriété suivante:
- 
-- data-confirm-callback="someFunctionToRunIfTheConfirmButtonIsClicked();"
-
-Le lien href du lien ne sera pas automatiquement suivi (ou si c'est un formulaire, il ne sera pas soumis).
-A la place, la fonction js sera exécutée.
-
-
-Voici un exemple :
-
-	<form action="/your_url" class="confirm" data-title="Êtes vous sur ?" data-body="Cette action irreversible ! Souhaitez vous confirmer ?" data-cancel-button-class="cancel" data-confirm-button-class="danger" method="post" {{ form_enctype(delete_form) }}>
-		{{ form_errors(delete_form) }}
-		{{ form_widget(delete_form) }}
-        <input type="submit" class="btn btn-danger span4" style="width:100%" value="Supprimer définitvement"/>
-    </form>
-
-ou pour un lien :
-
-<a href="/your_url" class="btn btn-mini btn-danger confirm" data-title="Êtes vous sur de vouloir faire ca&nbsp;?" data-body="BLABLA" data-cancel-button-class="cancel" data-confirm-button-class="danger">Dépublier</a>
-
-Ajoutez le fichier javascript dans votre template en spécifiant la variable confirmUrl comme ceci :
 
     <script type="text/javascript">var confirmUrl = "{{ path('Alertify_Confirm') }}";</script>
     <script src="{{ asset('bundles/avawesomealertify/js/confirm.js') }}"></script>
+
+
+## Use
+
+Add the following attributes to your link|form tag :
+
+- class="confirm"
+- data-title="Are you sure ?"
+- data-body="This is forever !"
+- data-cancel-button-class="btn-cancel"
+- data-confirm-button-class="btn-primary"
+
+You can also add a callback like this:
+ 
+- data-confirm-callback="someFunctionToRunIfTheConfirmButtonIsClicked();"
+
+In this cas, after confirm, the link won't be directly followed (or the form won't be submit).
+Instead of that, the js we'll be ran.
+
+## Example :
+
+### Form :
+
+	<form action="/your_url" class="confirm" data-title="Sur ?" data-body="Butterfly will die. Do you confirm ?" data-cancel-button-class="cancel" data-confirm-button-class="danger" method="post" {{ form_enctype(delete_form) }}>
+		{{ form_errors(delete_form) }}
+		{{ form_widget(delete_form) }}
+        <input type="submit" class="btn btn-danger span4" style="width:100%" value="Kill Butterfly"/>
+    </form>
+
+### link :
+
+<a href="/your_url" class="btn btn-mini btn-danger confirm" data-title="Are you sure ?" data-body="Kittens will suffer ! Do you confirm ?" data-cancel-button-class="cancel" data-confirm-button-class="danger">Burn some cats</a>
