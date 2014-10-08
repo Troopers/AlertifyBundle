@@ -2,13 +2,29 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="fr" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="1">
+            <trans-unit>
                 <source>modal.confirm.button.valid</source>
                 <target>Valider</target>
             </trans-unit>
-			<trans-unit id="2">
+            <trans-unit>
                 <source>modal.confirm.button.cancel</source>
                 <target>Fermer</target>
+            </trans-unit>
+            <trans-unit>
+                <source>alert.success.label</source>
+                <target>Succès</target>
+            </trans-unit>
+            <trans-unit>
+                <source>alert.info.label</source>
+                <target>Information</target>
+            </trans-unit>
+            <trans-unit>
+                <source>alert.warning.label</source>
+                <target>Avertissement</target>
+            </trans-unit>
+			<trans-unit>
+                <source>alert.error.label</source>
+                <target>Erreur</target>
             </trans-unit>
         </body>
     </file>

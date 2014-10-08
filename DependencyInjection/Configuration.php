@@ -33,7 +33,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('context')->defaultValue('front')->cannotBeEmpty()->end()
                         ->scalarNode('engine')->defaultValue('toastr')->cannotBeEmpty()->end()
                         ->scalarNode('layout')->defaultValue('top-right')->cannotBeEmpty()->end()
-                        ->scalarNode('translationDomain')->defaultValue('flash')->cannotBeEmpty()->end()
+                        ->scalarNode('translationDomain')->defaultValue('alertify')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
                 ->arrayNode('contexts')
@@ -42,7 +42,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('engine')->defaultValue('toastr')->cannotBeEmpty()->end()
                         ->scalarNode('layout')->defaultValue('top-right')->cannotBeEmpty()->end()
-                        ->scalarNode('translationDomain')->defaultValue('flash')->cannotBeEmpty()->end()
+                        ->scalarNode('translationDomain')->defaultValue('alertify')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
             ->end();
