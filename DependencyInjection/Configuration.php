@@ -27,11 +27,25 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('engine')->defaultValue('toastr')->cannotBeEmpty()->end()
-                ->scalarNode('layout')->defaultValue('topRight')->cannotBeEmpty()->end()
-                ->scalarNode('translationDomain')->defaultValue('flash')->cannotBeEmpty()->end()
-            ->end()
-        ->end();
+                ->arrayNode('default')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('context')->defaultValue('front')->cannotBeEmpty()->end()
+                        ->scalarNode('engine')->defaultValue('toastr')->cannotBeEmpty()->end()
+                        ->scalarNode('layout')->defaultValue('top-right')->cannotBeEmpty()->end()
+                        ->scalarNode('translationDomain')->defaultValue('flash')->cannotBeEmpty()->end()
+                    ->end()
+                ->end()
+                ->arrayNode('contexts')
+                    ->useAttributeAsKey(true)
+                    ->prototype('array')
+                    ->children()
+                        ->scalarNode('engine')->defaultValue('toastr')->cannotBeEmpty()->end()
+                        ->scalarNode('layout')->defaultValue('top-right')->cannotBeEmpty()->end()
+                        ->scalarNode('translationDomain')->defaultValue('flash')->cannotBeEmpty()->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

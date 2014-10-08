@@ -1,3 +1,8 @@
+{# Check & auto repair #}
+{% if layout not in ['top-right', 'top-left', 'top-full-width', 'bottom-right', 'bottom-left', 'bottom-full-width'] %}
+    {% set layout = 'top-right' %}
+{% endif %}
+
 <script type="text/javascript" src="{{asset('bundles/avawesomealertify/toastr/js/toastr.js')}}"></script>
 <link rel="stylesheet" href="{{asset('bundles/avawesomealertify/toastr/css/toastr.css')}}">
 
@@ -11,23 +16,23 @@
 
     //
     toastr.options = {
-        positionClass: 'toast-{{ layout }}'
+        positionClass    : 'toast-{{ layout }}', //top-right, top-left, top-full-width, bottom-right, bottom-left, bottom-full-width
+        closeButton    : {{ closeButton|default('false') }},
+        debug          : {{ debug|default('false') }},
+        positionClass  : '{{ positionClass|default('toast-top-right') }}',
+        onclick        : {{ onclick|default('null') }},
+        showDuration   : {{ showDuration|default('20000') }},
+        hideDuration   : {{ hideDuration|default('1000') }},
+        timeOut        : {{ timeOut|default('5000') }},
+        extendedTimeOut: {{ extendedTimeOut|default('1000') }},
+        showEasing     : '{{ showEasing|default('swing') }}',
+        hideEasing     : '{{ hideEasing|default('linear') }}',
+        showMethod     : '{{ showMethod|default('fadeIn') }}',
+        hideMethod     : '{{ hideMethod|default('fadeOut') }}'
     };
 
     //Available options
     // toastr.options = {
-    //   "closeButton": false,
-    //   "debug": false,
-    //   "positionClass": "toast-top-right", //top-right, top-left, top-full-width, bottom-right, bottom-left, bottom-full-width
-    //   "onclick": null,
-    //   "showDuration": "20000",
-    //   "hideDuration": "1000",
-    //   "timeOut": "5000",
-    //   "extendedTimeOut": "1000",
-    //   "showEasing": "swing",
-    //   "hideEasing": "linear",
-    //   "showMethod": "fadeIn",
-    //   "hideMethod": "fadeOut"
     // }
 
     delay({% if timeout is defined and timeout != null %} {{ timeout }}{% else %} 1000{% endif %} , function() {

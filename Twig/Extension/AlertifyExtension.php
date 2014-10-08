@@ -48,8 +48,9 @@ class AlertifyExtension extends \Twig_Extension
 
     /**
      * Alertify filter
+     * @param TwigEnvironment $environment
+     * @param Session         $session
      *
-     * @param  Session $session
      * @return string
      */
     public function alertifyFilter($environment, Session $session)
@@ -67,9 +68,12 @@ class AlertifyExtension extends \Twig_Extension
             } else {
                 foreach ($flash as $key => $content) {
                     if (is_array($content)) {
-                        $parameters = array_merge($this->defaultParameters, $content);
+                        $context = isset($content['context']) ? $content['context'] : null;
+                        $defaultParameters = self::getDefaultParametersFromContext($context);
+                        $parameters = array_merge($defaultParameters, $content);
                     } else {
-                        $parameters = array_merge($this->defaultParameters, array('body' => $content));
+                        $defaultParameters = self::getDefaultParametersFromContext(null);
+                        $parameters = array_merge($defaultParameters, array('body' => $content));
                     }
 
                     $parameters['type'] = $type;
@@ -79,6 +83,31 @@ class AlertifyExtension extends \Twig_Extension
         }
 
         return implode(' ', $renders);
+    }
+
+    /**
+      * Get the configuration for the given context
+      * @param string $context The actual context
+      *
+      * @return array
+      **/
+    public function getDefaultParametersFromContext($context = null)
+    {
+        if (count($this->defaultParameters['contexts'])) {
+            //If context is not given, just take the default one
+            if ($context === null) {
+                $context = $this->defaultParameters['default']['context'];
+            }
+
+            //If context is in declared contexts, we use it
+            if (array_key_exists($context, $this->defaultParameters['contexts'])) {
+                return $this->defaultParameters['contexts'][$context];
+            }
+        }
+
+        //else we return the default configuration
+        return $this->defaultParameters['default'];
+
     }
 
 }
