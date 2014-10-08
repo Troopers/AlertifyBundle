@@ -22,7 +22,7 @@ Le formulaire, ou le lien en question doit avoir les attributs ci dessous :
 
 Si le formulaire ou lien possède la propriété suivante:
  
-- confirm-callback="someFunctionToRunIfTheConfirmButtonIsClicked();"
+- data-confirm-callback="someFunctionToRunIfTheConfirmButtonIsClicked();"
 
 Le lien href du lien ne sera pas automatiquement suivi (ou si c'est un formulaire, il ne sera pas soumis).
 A la place, la fonction js sera exécutée.
