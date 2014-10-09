@@ -48,4 +48,6 @@ Instead of that, the js we'll be ran.
 
 ### link :
 
+```html
 <a href="/your_url" class="btn btn-mini btn-danger confirm" data-title="Are you sure ?" data-body="Kittens will suffer ! Do you confirm ?" data-cancel-button-class="cancel" data-confirm-button-class="danger">Burn some cats</a>
+```
