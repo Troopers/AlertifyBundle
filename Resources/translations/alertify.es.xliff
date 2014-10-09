@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="pl" datatype="plaintext" original="file.ext">
+    <file source-language="es" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit>
+            <trans-unit id="1">
                 <source>modal.confirm.button.valid</source>
                 <target>Validar</target>
             </trans-unit>
-			<trans-unit>
+            <trans-unit id="2">
                 <source>modal.confirm.button.cancel</source>
                 <target>Cancelar</target>
             </trans-unit>
-            <trans-unit>
+            <trans-unit id="3">
                 <source>alert.success.label</source>
                 <target>Éxito</target>
             </trans-unit>
-            <trans-unit>
+            <trans-unit id="4">
                 <source>alert.info.label</source>
                 <target>Información</target>
             </trans-unit>
-            <trans-unit>
+            <trans-unit id="5">
                 <source>alert.warning.label</source>
                 <target>Advertencia</target>
             </trans-unit>
-            <trans-unit>
+            <trans-unit id="6">
                 <source>alert.error.label</source>
                 <target>Error</target>
             </trans-unit>
