@@ -6,7 +6,7 @@
                 <source>modal.confirm.button.valid</source>
                 <target>OK</target>
             </trans-unit>
-			<trans-unit id="2">
+            <trans-unit id="2">
                 <source>modal.confirm.button.cancel</source>
                 <target>Cancel</target>
             </trans-unit>
