@@ -4,27 +4,27 @@
         <body>
             <trans-unit>
                 <source>modal.confirm.button.valid</source>
-                <target>Zatwierdź</target>
+                <target>Validar</target>
             </trans-unit>
 			<trans-unit>
                 <source>modal.confirm.button.cancel</source>
-                <target>Zamknij</target>
+                <target>Cancelar</target>
             </trans-unit>
             <trans-unit>
                 <source>alert.success.label</source>
-                <target>Sukces</target>
+                <target>Éxito</target>
             </trans-unit>
             <trans-unit>
                 <source>alert.info.label</source>
-                <target>Informacje</target>
+                <target>Información</target>
             </trans-unit>
             <trans-unit>
                 <source>alert.warning.label</source>
-                <target>Ostrzeżenie</target>
+                <target>Advertencia</target>
             </trans-unit>
             <trans-unit>
                 <source>alert.error.label</source>
-                <target>Błąd</target>
+                <target>Error</target>
             </trans-unit>
         </body>
     </file>

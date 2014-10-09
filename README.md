@@ -1,13 +1,12 @@
 AvAlertifyBundle
 =============
 
-Go here to read more about this plugin : (http://appventus.com/blog/les-notifications-ou-comment-ameliorer-la-user-experience-grace-a-noty-et-aux-modals-en-2-minutes)
-
 What is the point ?
 -------
 
+This bundle allows you to easily harmonize alerts and others notifications.
+Declare in the config (or just use the default configuration) and dispatch alerts with the following libraries ([or your own](#use-my-own-alert-system)):
 
-This bundle allow you to easily turn your poor lonely sad notifications into modals from
 * TwitterBootstrap (http://twitter.github.com/bootstrap/javascript.html#modals) or
 * Noty (http://needim.github.com/noty/) or
 * Toastr (https://github.com/CodeSeven/toastr)
@@ -35,18 +34,36 @@ Configuration ?
 ------------
 
 
-To define the default configuration of your alerts, you can add these lines in your config.yml :
+To define the default configuration of your alerts, you can add the following lines in your config.yml :
 
 ```yml
 av_awesome_alertify:
-    engine: "toastr"              #Could be noty, modal, toastr
-    layout: "top-right"           #Is relative according to the selected engine
-    translationDomain: "messages" #Where do you want to store the translation strings
+    contexts:
+        front:
+            engine: "toastr"              \#Could be noty, modal, toastr [or your own](#use-my-own-alert-system)
+            layout: "top-right"           \#Is relative according to the selected engine
+            translationDomain: "messages" \#Where do you want to store the translation strings
+        admin:
+            engine: "myOwnSystem"
+            layout: "bottomRight"
+            translationDomain: "messages"
+```
+
+By default, even if you do not declare any context, Alertify setup default values. You can override these settings easily like this:
+
+ ```yml
+av_awesome_alertify:
+    default:
+        context: app                \#default: front
+        engine: noty                \#default: toastr
+        layout: bottomLeft          \#default: top-right
+        translationDomain: messages \#default: flash
+    contexts:
+    ...
 ```
 
 How to ?
 ------------
-
 
 It's easy to use, just follow the following:
 
@@ -59,7 +76,8 @@ Add this block at the end of your twig layout:
 Now, anywhere, you can put your alert in the flash session and enjoy.
 
     $this->get('session')->getFlashBag()->add('success', 'ok');
-
+    $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok');
+    $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok', 'context' => 'front');
 
 If you're using AvAwesomeShortcutsBundle, you can also use these shortcuts (from av.shortcuts or AwesomeController) :
 
@@ -67,6 +85,42 @@ If you're using AvAwesomeShortcutsBundle, you can also use these shortcuts (from
     $this->warn('TEST');
     $this->inform('TEST');
     $this->scold('TEST');
+
+If you have two contexts in your application (front and back for example), I spur you to override these functions in your controller in each side to pass automatic context like this :
+
+```php
+    class BaseFrontController
+    {
+        /**
+         * congrat user through flashbag : all happened successfully
+         * Will automatically inject context
+         * @param string $content
+         */
+        public function congrat($content)
+        {
+            $content = array('body' => $content, 'context' => 'front');
+            $this->get('av.shortcuts')->congrat($content);
+        }
+    }
+```
+
+
+<a name="use-my-own-alert-system"></a>Display alerts with a custom library
+------------
+
+AvAlertify comes with some librairies to ease use but it's free to you to use custom Library (feel free to make a Pull request, your library could interest community :).
+You just have to follow these steps :
+
+```yml
+av_awesome_alertify:
+    contexts:
+        front:
+            engine: "myOwnSystem"
+            layout: "bottomRight" \#it's up to your library
+            translationDomain: "messages"
+```
+
+Then just override app/Resources/AvAwesomeAlertifyBundle/views/Modal/**myOwnSystem**.html.twig and add the alert initialization.
 
 Options
 ------------

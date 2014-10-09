@@ -26,5 +26,14 @@ class AvAwesomeAlertifyExtension extends Extension
         $loader->load('services.yml');
 
         $container->setParameter('av_awesome_alertify', $config);
+        $container->setParameter('av_awesome_alertify.contexts', $config['contexts']);
+        $container->setParameter('av_awesome_alertify.default.context', $config['default']['context']);
+        $container->setParameter('av_awesome_alertify.default.engine', $config['default']['engine']);
+        $container->setParameter('av_awesome_alertify.default.layout', $config['default']['layout']);
+        $container->setParameter('av_awesome_alertify.default.translationDomain', $config['default']['translationDomain']);
+
+        foreach ($config['contexts'] as $key => $value) {
+            $container->setParameter('av_awesome_alertify.contexts.'.$key, $value);
+        }
     }
 }
