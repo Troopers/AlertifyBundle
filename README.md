@@ -134,11 +134,19 @@ To call a modal box, just use a flash named 'modal':
 as you see, you can pass some arguments tu customize the modal, availables ones are:
 
     title:
-      just a string
+      (html) string
     button-class:
       you con specify classes to customize your button
     body:
       html string
+    hasHeader:
+      boolean (default = true)
+    hasFooter:
+      boolean (default = true)
+    deleteIcon:
+      string : icon-class (for example: "fa fa-times")
+    id:
+      string : (default: "alertify-modal")
 
 
 Callback type

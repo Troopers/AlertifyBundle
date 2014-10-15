@@ -26,6 +26,14 @@
                 <source>alert.error.label</source>
                 <target>Erreur</target>
             </trans-unit>
+            <trans-unit id="7">
+                <source>alert.back.label</source>
+                <target>Retour</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>alert.close.label</source>
+                <target>Fermer</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

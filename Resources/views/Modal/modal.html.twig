@@ -1,31 +1,44 @@
-<div class="modal fade" id="alertify-modal" tabindex="-1">
+<div class="modal fade {{ 'modal-' ~ type }}" id="{{ id|default('alertify-modal') }}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
+            {# Should we display header ? If hasHeader is passed and is equal to false, we won't #}
+            {% if hasHeader is not defined or hasHeader == true %}
             <div class="modal-header">
                 {% if static is not defined or static == false %}
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    {# did you pass a deleteIcon var ? If so, we'll use it here #}
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        {% if deleteIcon is not defined or deleteIcon == "" %}
+                            ×
+                        {% else %}
+                            <i class="{{ deleteIcon }}"></i>
+                        {% endif %}
+                        </button>
                 {% endif %}
-                <h4 class="modal-title">{{title}}</h4>
+                <h4 class="modal-title">{{ title|raw|trans({}, translationDomain|default('alertify')) }}</h4>
             </div>
+            {% endif %}
             <div class="modal-body" id="modal-body">
                 {{body|raw}}
             </div>
+            {# Should we display footer ? If hasHeader is passed and is equal to false, we won't #}
+            {% if hasFooter is not defined or hasFooter == true %}
             <div class="modal-footer">
                 {% if static is not defined or static == false %}
-                    <button class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" data-dismiss="modal" aria-hidden="true">Fermer</button>
+                    <button class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" data-dismiss="modal" aria-hidden="true">{{ 'alert.close.label'|trans({}, translationDomain|default('alertify')) }}</button>
                 {% else %}
-                    <button onClick="javascript: history.go(-1);" class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" aria-hidden="true">Retour</button>
+                    <button onClick="javascript: history.go(-1);" class="{% if button_class is defined and button_class != "" %}{{ button_class }}{% endif %}" aria-hidden="true">{{ 'alert.back.label'|trans({}, translationDomain|default('alertify')) }}</button>
                 {% endif %}
             </div>
+            {% endif %}
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 <script type="text/javascript">
 jQuery(document).ready(function() {
-$('#alertify-modal').modal('toggle');
-$('#alertify-modal .modal-footer button').focus();
+    $("#{{ id|default('alertify-modal') }}").modal("toggle");
+{% if hasFooter is not defined or hasFooter == true %}
+    $("#{{ id|default('alertify-modal') }} .modal-footer button").focus();
+{% endif %}
 });
 </script>
-
-
