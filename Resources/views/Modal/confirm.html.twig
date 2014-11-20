@@ -19,7 +19,7 @@
 <script type="text/javascript">
   $('#{{ id }}').modal({'show':true,'keyboard':true});
 $('#{{ id }} .{{ confirm_button_class }}').focus();
-  $('#{{ id }}').on('hide',function(){
+  $('#{{ id }}').on('hide.bs.modal', function (e) {
     $('.confirm-waiting').addClass('confirm');
     $('.confirm-waiting').removeClass('confirm-waiting');
     $('#{{ id }}').remove();
