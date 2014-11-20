@@ -25,6 +25,8 @@ function smartConfirm(e,referer,type){
     },
     function(data){
       $("body").append(data);
+      $(referer).addClass('confirm');
+      $(referer).removeClass('confirm-waiting');
     }
   );
 
