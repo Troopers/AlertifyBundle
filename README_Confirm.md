@@ -5,19 +5,18 @@ AlertifyBundle eases the confirm dialog you may use when protecting link or form
 
 ## Installation:
 
-Add this to your routing.yml :
+Please note that [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#installation) is required so you need to [setup it properly before](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#installation) following next steps.
+
+Add this to your routing.yml file:
 
 	AvAwesomeAlertifyBundle:
 	    resource: "@AvAwesomeAlertifyBundle/Controller/"
 	    type:     annotation
 	    prefix:   /
 
-Add this to your template :
+Add this to your template:
 
-
-    <script type="text/javascript">var confirmUrl = "{{ path('Alertify_Confirm') }}";</script>
     <script src="{{ asset('bundles/avawesomealertify/js/confirm.js') }}"></script>
-
 
 ## Use
 

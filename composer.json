@@ -7,21 +7,19 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Paul Andrieux (AppVentus)",
+            "name": "Paul Andrieux",
             "email": "paul@appventus.com",
             "homepage": "http://appventus.com"
         },
         {
-            "name": "Leny Bernard (AppVentus)",
+            "name": "Leny Bernard",
             "email": "leny@appventus.com",
-            "homepage": "http://appventus.com"
-        },
-        {
-            "name": "Pierre Jolly (AppVentus)",
-            "email": "pierre@appventus.com",
             "homepage": "http://appventus.com"
         }
     ],
+    "require": {
+        "friendsofsymfony/jsrouting-bundle": "2.0.*@dev"
+    },
     "require-dev": {
         "symfony/class-loader": "~2.1"
     },
