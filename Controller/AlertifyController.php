@@ -15,14 +15,14 @@ class AlertifyController extends Controller
 {
     /**
      * Confirm modal
-     *
      * @param Request $request An HTTP request.
+     *
      * @return void
      *
-     * @Route("/confirm", name="Alertify_Confirm")
+     * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
      * @Template("AvAwesomeAlertifyBundle:Modal:confirm.html.twig")
      */
-    public function ConfirmAction(Request $request)
+    public function confirmAction(Request $request)
     {
         $confirmCallback = $request->get('confirm_callback');
         if ($confirmCallback === '') {
@@ -36,24 +36,24 @@ class AlertifyController extends Controller
             'cancel_button_class'  => $request->get('cancel_button_class', 'btn-cancel'),
             'confirm_button_class' => $request->get('confirm_button_class', 'btn-primary'),
             'type'                 => $request->get('type'),
-            'confirmCallback'                 => $confirmCallback,
+            'confirmCallback'      => $confirmCallback,
         );
     }
 
     /**
      * Ajax
-     *
      * @param Request $request An HTTP request.
+     *
      * @return void
      *
-     * @Route("/ajax", name="Alertify_Ajax")
+     * @Route("/ajax", name="alertify_ajax")
      * @Template("AvAwesomeAlertifyBundle:Modal:ajax.html.twig")
      */
-    public function AjaxAction(Request $request)
+    public function ajaxAction(Request $request)
     {
         $options = array();
 
-        foreach($request->request->all() as $name => $option){
+        foreach ($request->request->all() as $name => $option) {
             $options[$name] = $option;
         }
         $this->get('session')->setFlash($request->get('main_type'), $options);
