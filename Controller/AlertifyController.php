@@ -1,6 +1,6 @@
 <?php
 
-namespace AppVentus\Awesome\AlertifyBundle\Controller;
+namespace AppVentus\AlertifyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,7 @@ class AlertifyController extends Controller
      * @return void
      *
      * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
-     * @Template("AvAwesomeAlertifyBundle:Modal:confirm.html.twig")
+     * @Template("AvAlertifyBundle:Modal:confirm.html.twig")
      */
     public function confirmAction(Request $request)
     {
@@ -47,7 +47,7 @@ class AlertifyController extends Controller
      * @return void
      *
      * @Route("/ajax", name="alertify_ajax")
-     * @Template("AvAwesomeAlertifyBundle:Modal:ajax.html.twig")
+     * @Template("AvAlertifyBundle:Modal:ajax.html.twig")
      */
     public function ajaxAction(Request $request)
     {

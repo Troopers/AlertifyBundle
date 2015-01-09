@@ -9,14 +9,14 @@ Please note that [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsR
 
 Add this to your routing.yml file:
 
-	AvAwesomeAlertifyBundle:
-	    resource: "@AvAwesomeAlertifyBundle/Controller/"
+	AvAlertifyBundle:
+	    resource: "@AvAlertifyBundle/Controller/"
 	    type:     annotation
 	    prefix:   /
 
 Add this to your template:
 
-    <script src="{{ asset('bundles/avawesomealertify/js/confirm.js') }}"></script>
+    <script src="{{ asset('bundles/avalertify/js/confirm.js') }}"></script>
 
 ## Use
 

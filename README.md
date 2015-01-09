@@ -25,7 +25,7 @@ Add it in your AppKernel.php:
     public function registerBundles() {
         $bundles = array(
             [...]
-            new AppVentus\Awesome\AlertifyBundle\AvAwesomeAlertifyBundle(),
+            new AppVentus\AlertifyBundle\AvAlertifyBundle(),
             [...]
 
 Then, just publish your assets, annnnnnd it's done !
@@ -37,7 +37,7 @@ Configuration ?
 To define the default configuration of your alerts, you can add the following lines in your config.yml :
 
 ```yml
-av_awesome_alertify:
+av_alertify:
     contexts:
         front:
             engine: "toastr"              \#Could be noty, modal, toastr [or your own](#use-my-own-alert-system)
@@ -52,7 +52,7 @@ av_awesome_alertify:
 By default, even if you do not declare any context, Alertify setup default values. You can override these settings easily like this:
 
  ```yml
-av_awesome_alertify:
+av_alertify:
     default:
         context: app                \#default: front
         engine: noty                \#default: toastr
@@ -112,7 +112,7 @@ AvAlertify comes with some librairies to ease use but it's free to you to use cu
 You just have to follow these steps :
 
 ```yml
-av_awesome_alertify:
+av_alertify:
     contexts:
         front:
             engine: "myOwnSystem"
@@ -120,7 +120,7 @@ av_awesome_alertify:
             translationDomain: "messages"
 ```
 
-Then just override app/Resources/AvAwesomeAlertifyBundle/views/Modal/**myOwnSystem**.html.twig and add the alert initialization.
+Then just override app/Resources/AvAlertifyBundle/views/Modal/**myOwnSystem**.html.twig and add the alert initialization.
 
 Options
 ------------

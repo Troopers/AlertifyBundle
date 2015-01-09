@@ -1,6 +1,6 @@
 <?php
 
-namespace AppVentus\Awesome\AlertifyBundle\Twig\Extension;
+namespace AppVentus\AlertifyBundle\Twig\Extension;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -61,7 +61,7 @@ class AlertifyExtension extends \Twig_Extension
         foreach ($flashes as $type => $flash) {
             if ($type == "callback") {
                 foreach ($flash as $key => $currentFlash) {
-                    $currentFlash['body'] .= $environment->render('AvAwesomeAlertifyBundle:Modal:callback.html.twig', $currentFlash);
+                    $currentFlash['body'] .= $environment->render('AvAlertifyBundle:Modal:callback.html.twig', $currentFlash);
                     $session->getFlashBag()->add($currentFlash['engine'], $currentFlash);
                     $renders[$type . $key] = $this->alertifyFilter($session);
                 }
@@ -77,7 +77,7 @@ class AlertifyExtension extends \Twig_Extension
                     }
 
                     $parameters['type'] = $type;
-                    $renders[$type . $key] = $environment->render('AvAwesomeAlertifyBundle:Modal:'.$parameters['engine'].'.html.twig', $parameters);
+                    $renders[$type . $key] = $environment->render('AvAlertifyBundle:Modal:'.$parameters['engine'].'.html.twig', $parameters);
                 }
             }
         }

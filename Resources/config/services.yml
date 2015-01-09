@@ -1,9 +1,9 @@
 parameters:
-    twig.extension.alertify.class: AppVentus\Awesome\AlertifyBundle\Twig\Extension\AlertifyExtension
+    twig.extension.alertify.class: AppVentus\AlertifyBundle\Twig\Extension\AlertifyExtension
 services:
     twig.extension.alertify:
         class: %twig.extension.alertify.class%
         arguments:
-            - "%av_awesome_alertify%"
+            - "%av_alertify%"
         tags:
             - { name: twig.extension }
