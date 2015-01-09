@@ -24,9 +24,9 @@
         "symfony/class-loader": "~2.1"
     },
     "autoload": {
-        "psr-0": { "AppVentus\\Awesome\\AlertifyBundle": "" }
+        "psr-0": { "AppVentus\\AlertifyBundle": "" }
     },
-    "target-dir": "AppVentus/Awesome/AlertifyBundle",
+    "target-dir": "AppVentus/AlertifyBundle",
 
     "minimum-stability": "dev",
     "extra": {
