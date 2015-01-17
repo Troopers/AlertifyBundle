@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    $('body').prepend('<div id="canvasloader-container"></div>');
-    createLoader('#canvasloader-container');
 
     $(document).on('click', '[data-alertify]', function(event) {
         event.preventDefault();
@@ -8,22 +6,28 @@ $(document).ready(function() {
         $("alertify-container").attr("data-update-effect", "show");
         $("alertify-container").attr("data-new-effect", "show");
         var params = getParams(this);
+        alertify(params);
+
+        return false;
+    });
+
+});
+
+    function alertify(params) {
+
         $.ajax({
-            url:  "/alertify/ajax",
+            url:  Routing.generate('alertify_ajax'),
             context: document.body,
             type: "POST",
             data: $.param(params),
             success: function(jsonResponse) {
-                ajaxify(jsonResponse, "alertify-container");
+                ajaxify(jsonResponse, "alertify-container", 'html');
             },
             error: function(jsonResponse) {
                 alert("Il semble s'êre produit une erreur");
-                $('#canvasloader-container').fadeOut();
             }
         });
-
-        return false;
-    });
+    }
 
      function getParams(element){
         var type = $(element).attr("data-alertify");
@@ -50,4 +54,3 @@ $(document).ready(function() {
         }
         return params;
     }
-});

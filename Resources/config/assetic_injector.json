@@ -3,7 +3,10 @@
     {
         "javascripts":
         {
-            "foot": "@AvAlertifyBundle/Resources/public/js/confirm.js"
+            "foot": [
+                "@AvAlertifyBundle/Resources/public/js/confirm.js",
+                "@AvAlertifyBundle/Resources/public/js/alertify.js"
+            ]
         }
     }
 }

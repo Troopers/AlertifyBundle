@@ -46,17 +46,21 @@ class AlertifyController extends Controller
      *
      * @return void
      *
-     * @Route("/ajax", name="alertify_ajax")
+     * @Route("/ajax", name="alertify_ajax", options={"expose"=true})
      * @Template("AvAlertifyBundle:Modal:ajax.html.twig")
      */
     public function ajaxAction(Request $request)
     {
         $options = array();
+        if ($context = $request->request->get('context')) {
+
+            $options = $this->container->getParameter('av_alertify.contexts.' . $context);
+        }
 
         foreach ($request->request->all() as $name => $option) {
             $options[$name] = $option;
         }
-        $this->get('session')->setFlash($request->get('main_type'), $options);
+        $this->get('session')->getFlashBag()->add($request->get('main_type'), $options);
 
         return array();
     }
