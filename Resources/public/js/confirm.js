@@ -22,9 +22,10 @@ function smartConfirm(e,referer,type){
         {
             title: $(referer).attr('data-title'),
             body: $(referer).attr('data-body'),
-            confirm_callback: $(referer).attr('data-confirm-callback'),      
+            confirm_callback: $(referer).attr('data-confirm-callback'),
             cancel_button_class: $(referer).attr('data-cancel-button-class'),
             confirm_button_class: $(referer).attr('data-confirm-button-class'),
+            modal_class: $(referer).attr('data-confirm-class'),
             id: $(referer).attr('id'),
             type: type
         },
