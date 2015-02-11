@@ -22,7 +22,8 @@ Add this to your template:
 
 Add the following attributes to your link|form tag :
 
-- class="confirm"
+- data-toggle="confirm" // class="confirm" (depreciated)
+- data-confirm-class="myModal"
 - data-title="Are you sure ?"
 - data-body="This is forever !"
 - data-cancel-button-class="btn-cancel"
@@ -39,7 +40,7 @@ Instead of that, the js we'll be ran.
 
 ### Form :
 
-	<form action="/your_url" class="confirm" data-title="Sur ?" data-body="Butterfly will die. Do you confirm ?" data-cancel-button-class="cancel" data-confirm-button-class="danger" method="post" {{ form_enctype(delete_form) }}>
+	<form action="/your_url" data-toggle="confirm" data-confirm-class="myModal" data-title="Sur ?" data-body="Butterfly will die. Do you confirm ?" data-cancel-button-class="cancel" data-confirm-button-class="danger" method="post" {{ form_enctype(delete_form) }}>
 		{{ form_errors(delete_form) }}
 		{{ form_widget(delete_form) }}
         <input type="submit" class="btn btn-danger span4" style="width:100%" value="Kill Butterfly"/>
