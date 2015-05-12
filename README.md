@@ -7,10 +7,10 @@ What is the point ?
 This bundle allows you to easily harmonize alerts and others notifications.
 Declare in the config (or just use the default configuration) and dispatch alerts with the following libraries ([or your own](#use-my-own-alert-system)):
 
-* TwitterBootstrap (http://twitter.github.com/bootstrap/javascript.html#modals) or
-* Noty (http://needim.github.com/noty/) or
-* Toastr (https://github.com/CodeSeven/toastr)
-
+* [Toastr](https://github.com/CodeSeven/toastr)
+* [TwitterBootstrap](http://twitter.github.com/bootstrap/javascript.html#modals)
+* [Noty](http://needim.github.com/noty/)
+* [Codrops notifications](http://tympanus.net/Development/NotificationStyles) `new`
 
 Installation
 ------------
@@ -40,7 +40,7 @@ To define the default configuration of your alerts, you can add the following li
 av_alertify:
     contexts:
         front:
-	    engine: "toastr"              \#Could be noty, modal, toastr or your own
+            engine: "toastr"              \#Could be noty, modal, toastr or your own
             layout: "top-right"           \#Is relative according to the selected engine
             translationDomain: "messages" \#Where do you want to store the translation strings
         admin:
