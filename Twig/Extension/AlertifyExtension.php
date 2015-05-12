@@ -63,7 +63,7 @@ class AlertifyExtension extends \Twig_Extension
                 foreach ($flash as $key => $currentFlash) {
                     $currentFlash['body'] .= $environment->render('AvAlertifyBundle:Modal:callback.html.twig', $currentFlash);
                     $session->getFlashBag()->add($currentFlash['engine'], $currentFlash);
-                    $renders[$type . $key] = $this->alertifyFilter($session);
+                    $renders[$type . $key] = $this->alertifyFilter($environment, $session);
                 }
             } else {
                 foreach ($flash as $key => $content) {
