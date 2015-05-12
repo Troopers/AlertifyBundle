@@ -1,0 +1,34 @@
+<script type="text/javascript" src="{{ asset('bundles/avalertify/codrops-notification/js/notificationFx.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('bundles/avalertify/codrops-notification/css/ns-default.css') }}">
+<link rel="stylesheet" href="{{ asset('bundles/avalertify/codrops-notification/css/ns-style-bar.css') }}">
+<link rel="stylesheet" href="{{ asset('bundles/avalertify/codrops-notification/css/ns-style-attached.css') }}">
+<link rel="stylesheet" href="{{ asset('bundles/avalertify/codrops-notification/css/ns-style-growl.css') }}">
+<link rel="stylesheet" href="{{ asset('bundles/avalertify/codrops-notification/css/ns-style-other.css') }}">
+
+<script type="text/javascript">
+    (function() {
+      var delay;
+
+      delay = function(ms, func) {
+        return setTimeout(func, ms);
+    };
+
+    var notification = new NotificationFx({
+        message : '<div>{{ body|raw|trans({}, translationDomain|default('messages')) }}</div>',
+        layout  : '{{ layout|default('growl') }}',
+        effect  : '{{ effect|default('jelly') }}',
+        ttl     : {{ ttl|default(10000) }},
+        type    : '{{ type|default('success') }}'
+    });
+
+    // show the notification
+    {% if timeout is defined and timeout != null %}
+        delay({{ timeout }} , function() {
+    {% endif %}
+            return notification.show();
+    {% if timeout is defined and timeout != null %}
+        });
+    {% endif %}
+
+    }).call(this);
+</script>
