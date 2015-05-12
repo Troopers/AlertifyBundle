@@ -40,7 +40,7 @@ To define the default configuration of your alerts, you can add the following li
 av_alertify:
     contexts:
         front:
-            engine: "toastr"              \#Could be noty, modal, toastr [or your own](#use-my-own-alert-system)
+	    engine: "toastr"              \#Could be noty, modal, toastr or your own
             layout: "top-right"           \#Is relative according to the selected engine
             translationDomain: "messages" \#Where do you want to store the translation strings
         admin:
@@ -79,12 +79,31 @@ Now, anywhere, you can put your alert in the flash session and enjoy.
     $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok');
     $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok', 'context' => 'front');
 
-If you're using AvAwesomeShortcutsBundle, you can also use these shortcuts (from av.shortcuts or AwesomeController) :
+You can use the `appventus_alertifybundle.helper.alertifyhelper` service to ease the alert creation :
 
-    $this->congrat('TEST');
-    $this->warn('TEST');
-    $this->inform('TEST');
-    $this->scold('TEST');
+    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->congrat('TEST');
+    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->warn('TEST');
+    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->inform('TEST');
+    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold('TEST');
+
+You can also use the AlertifyControllerTrait to have simple methods in controller :
+
+```php
+use AppVentus\AlertifyBundle\Controller\AlertifyControllerTrait;
+
+class MyController extends ...
+{
+    use AlertifyControllerTrait;
+
+    /* You can use then all methods :
+     * $this->alert("hello", $type = 'success');
+     * $this->congrat("Congratulation");
+     * $this->warn("Warning !");
+     * $this->inform("Did you know ?");
+     * $this->scold("What's wrong with you !");
+     */
+}
+```
 
 If you have two contexts in your application (front and back for example), I spur you to override these functions in your controller in each side to pass automatic context like this :
 
