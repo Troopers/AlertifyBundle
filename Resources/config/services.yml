@@ -7,3 +7,6 @@ services:
             - "%av_alertify%"
         tags:
             - { name: twig.extension }
+    appventus_alertifybundle.helper.alertifyhelper:
+        class: AppVentus\AlertifyBundle\Helper\AlertifyHelper
+        arguments: [ @session ]

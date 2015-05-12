@@ -16,11 +16,10 @@ class AlertifyController extends Controller
     /**
      * Confirm modal
      * @param Request $request An HTTP request.
-     *
-     * @return void
-     *
      * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
      * @Template("AvAlertifyBundle:Modal:confirm.html.twig")
+     *
+     * @return array
      */
     public function confirmAction(Request $request)
     {
@@ -44,11 +43,10 @@ class AlertifyController extends Controller
     /**
      * Ajax
      * @param Request $request An HTTP request.
-     *
-     * @return void
-     *
      * @Route("/ajax", name="alertify_ajax", options={"expose"=true})
      * @Template("AvAlertifyBundle:Modal:ajax.html.twig")
+     *
+     * @return array
      */
     public function ajaxAction(Request $request)
     {
