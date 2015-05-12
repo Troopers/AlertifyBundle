@@ -28,7 +28,35 @@ Add it in your AppKernel.php:
             new AppVentus\AlertifyBundle\AvAlertifyBundle(),
             [...]
 
-Then, just publish your assets, annnnnnd it's done !
+To include the library of your choice, you have these 2 methods :
+
+### automatically with [https://github.com/AppVentus/AsseticInjectorBundle](AsseticInjectorBundle) (*recommended*)
+
+Just add the name of the resource tag (e.g alertify-toastr) in your regular assetic's block.
+
+For example, this code ...
+
+```twig
+    {% javascripts injector="alertify-toastr"
+        '@MyAcmeDemoBundle/Resources/public/js/loremipsumdolorsitamet.js'
+     %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+```
+and the same way for stylesheets.
+
+### manually
+
+If you want to do this  manually, you'll have to read the Resources/config/assetic_injector.json file and add them manually :
+
+```twig
+    {% javascripts
+        '@AvAlertifyBundle/Resources/public/toastr/js/toastr.js'
+     %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+```
+and the same way for stylesheets.
 
 Configuration ?
 ------------
