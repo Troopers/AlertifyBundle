@@ -63,4 +63,4 @@ class AlertifyHelper {
     {
         $this->session->getFlashBag()->add('error', $content);
     }
-} 
+}
