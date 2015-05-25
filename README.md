@@ -1,5 +1,14 @@
-AvAlertifyBundle
+![AppVentus](Media/appventus.png)
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AppVentus/AvAlertifyBundle)
+[![License](https://img.shields.io/packagist/l/appventus/alertify-bundle.svg)](https://packagist.org/packages/appventus/alertify-bundle)
+[![Version](https://img.shields.io/packagist/v/appventus/alertify-bundle.svg)](https://packagist.org/packages/appventus/alertify-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e/mini.png)](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e)
+[![Dependency Status](https://www.versioneye.com/php/appventus:alertify-bundle/dev-master/badge.svg)](https://www.versioneye.com/php/appventus:alertify-bundle/dev-master)
 =============
+
+Alertify Bundle
+===============
 
 What is the point ?
 -------
@@ -230,7 +239,7 @@ Actually, this library is not really made for it but you can simply add this par
 
 
 Confirm modal
-------------
+-------------
 
 After a link's clic or form's submission, we sometimes want to prompt the user to be sure he understood what he did.
 You can make it as a simply way by following the doc here : (https://github.com/AppVentus/AvAlertifyBundle/blob/master/README_Confirm.md)

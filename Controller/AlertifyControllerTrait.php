@@ -2,8 +2,6 @@
 
 namespace AppVentus\AlertifyBundle\Controller;
 
-use Symfony\Component\DependencyInjection\Container;
-
 /**
  * @property Container container
  */
@@ -59,4 +57,4 @@ trait AlertifyControllerTrait {
     {
         $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($content);
     }
-} 
+}
