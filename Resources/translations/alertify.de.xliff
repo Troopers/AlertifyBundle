@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="de" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>modal.confirm.button.valid</source>
+                <target>Bestätigen</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>modal.confirm.button.cancel</source>
+                <target>Schließen</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>alert.success.label</source>
+                <target>Erfolg</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>alert.info.label</source>
+                <target>Information</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>alert.warning.label</source>
+                <target>Mahnung</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>alert.error.label</source>
+                <target>Fehler</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>alert.back.label</source>
+                <target>Rückblende</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>alert.close.label</source>
+                <target>Schließen/target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
