@@ -32,7 +32,7 @@
             </trans-unit>
             <trans-unit id="8">
                 <source>alert.close.label</source>
-                <target>Schließen/target>
+                <target>Schließen</target>
             </trans-unit>
         </body>
     </file>
