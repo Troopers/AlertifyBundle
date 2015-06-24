@@ -8,7 +8,7 @@
                 "@AvAlertifyBundle/Resources/public/js/alertify.js"
             ],
             "alertify-toastr": [
-                "@AvAlertifyBundle/Resources/public/toastr/css/toastr.css"
+                "@AvAlertifyBundle/Resources/public/toastr/js/toastr.js"
             ],
             "alertify-noty": [
                 "@AvAlertifyBundle/Resources/public/noty/js/jquery.noty.js"
