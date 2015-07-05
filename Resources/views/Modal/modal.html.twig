@@ -15,7 +15,7 @@
                             {% endif %}
                             </button>
                     {% endif %}
-                    <h4 class="modal-title">{{ title|raw|trans({}, translationDomain|default('alertify')) }}</h4>
+                    <h4 class="modal-title">{{ title|trans({}, translationDomain|default('alertify'))|raw }}</h4>
                 </div>
                 {% endif %}
                 <div class="modal-body" id="modal-body">
