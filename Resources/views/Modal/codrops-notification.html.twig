@@ -1,27 +1,15 @@
 <script type="text/javascript">
     (function() {
-      var delay;
-
-      delay = function(ms, func) {
-        return setTimeout(func, ms);
-    };
-
-    var notification = new NotificationFx({
-        message : '<div>{{ body|raw|trans({}, translationDomain|default('messages')) }}</div>',
-        layout  : '{{ layout|default('growl') }}',
-        effect  : '{{ effect|default('jelly') }}',
-        ttl     : {{ ttl|default(10000) }},
-        type    : '{{ type|default('success') }}'
-    });
-
-    // show the notification
-    {% if timeout is defined and timeout != null %}
-        delay({{ timeout }} , function() {
-    {% endif %}
-            return notification.show();
-    {% if timeout is defined and timeout != null %}
+        var notification = new NotificationFx({
+            message : '<div>{{ body|raw|trans({}, translationDomain|default('messages')) }}</div>',
+            layout  : '{{ layout|default('growl') }}',
+            effect  : '{{ effect|default('jelly') }}',
+            ttl     : {{ timeout|default(10000) }},
+            type    : '{{ type|default('success') }}'
         });
-    {% endif %}
 
-    }).call(this);
+        // show the notification
+        return notification.show();
+
+        }).call(this);
 </script>
