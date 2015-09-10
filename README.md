@@ -1,4 +1,4 @@
-![AppVentus](Media/appventus.png)
+[![AppVentus](https://github.com/AppVentus/AvAlertifyBundle/blob/master/Media/appventus.png)](http://appventus.com)
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AppVentus/AvAlertifyBundle)
 [![License](https://img.shields.io/packagist/l/appventus/alertify-bundle.svg)](https://packagist.org/packages/appventus/alertify-bundle)
