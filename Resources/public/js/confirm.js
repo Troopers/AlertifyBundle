@@ -25,6 +25,8 @@ function smartConfirm(e,referer,type){
             confirm_callback: $(referer).attr('data-confirm-callback'),
             cancel_button_class: $(referer).attr('data-cancel-button-class'),
             confirm_button_class: $(referer).attr('data-confirm-button-class'),
+            cancel_button_value: $(referer).attr('data-cancel-button-value'),
+            confirm_button_value: $(referer).attr('data-confirm-button-value'),
             modal_class: $(referer).attr('data-confirm-class'),
             id: $(referer).attr('id'),
             type: type

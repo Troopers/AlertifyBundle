@@ -34,6 +34,8 @@ class AlertifyController extends Controller
             'id'                   => $request->get('id').rand(1,100).'-modal',
             'cancel_button_class'  => $request->get('cancel_button_class', 'btn-cancel'),
             'confirm_button_class' => $request->get('confirm_button_class', 'btn-primary'),
+            'cancel_button_value'  => $request->get('cancel_button_value'),
+            'confirm_button_value' => $request->get('confirm_button_value'),
             'modal_class'          => $request->get('modal_class'),
             'type'                 => $request->get('type'),
             'confirmCallback'      => $confirmCallback,
