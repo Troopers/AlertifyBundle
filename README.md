@@ -70,7 +70,6 @@ and the same way for stylesheets.
 Configuration ?
 ------------
 
-
 To define the default configuration of your alerts, you can add the following lines in your config.yml :
 
 ```yml
@@ -243,3 +242,8 @@ Confirm modal
 
 After a link's clic or form's submission, we sometimes want to prompt the user to be sure he understood what he did.
 You can make it as a simply way by following the doc here : (https://github.com/AppVentus/AvAlertifyBundle/blob/master/README_Confirm.md)
+
+Relations
+------------
+
+You can use the [AvAwesomeShortcutsBundle](https://github.com/AppVentus/AvAwesomeShortcutsBundle) which allows you to easily add and use shortcuts for your dev apps
