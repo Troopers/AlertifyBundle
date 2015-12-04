@@ -5,8 +5,8 @@ namespace AppVentus\AlertifyBundle\Controller;
 /**
  * @property Container container
  */
-trait AlertifyControllerTrait {
-
+trait AlertifyControllerTrait
+{
     /**
      * Alert message to flash bag.
      *
@@ -19,7 +19,7 @@ trait AlertifyControllerTrait {
     }
 
     /**
-     * Congrats user through flash bag : all happened successfully
+     * Congrats user through flash bag : all happened successfully.
      *
      * @param string $content
      */
@@ -29,7 +29,7 @@ trait AlertifyControllerTrait {
     }
 
     /**
-     * Warn user through flash bag: something requires attention
+     * Warn user through flash bag: something requires attention.
      *
      * @param string $content
      */
@@ -39,7 +39,7 @@ trait AlertifyControllerTrait {
     }
 
     /**
-     * Inform user through flash bag: something have to be said
+     * Inform user through flash bag: something have to be said.
      *
      * @param string $content
      */
@@ -49,7 +49,7 @@ trait AlertifyControllerTrait {
     }
 
     /**
-     * Scold user through flash bag: something went wrong
+     * Scold user through flash bag: something went wrong.
      *
      * @param string $content
      */
