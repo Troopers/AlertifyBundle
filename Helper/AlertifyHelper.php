@@ -2,15 +2,15 @@
 
 namespace AppVentus\AlertifyBundle\Helper;
 
-
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class AlertifyHelper {
-
+class AlertifyHelper
+{
     protected $session = null;
 
     /**
-     * Constructor
+     * Constructor.
+     *
      * @param Session $session
      */
     public function __construct(Session $session)
@@ -23,13 +23,15 @@ class AlertifyHelper {
      * @param string $content Captain Obvious ? We have to setup a content
      * @param string $type    Success or Error ? Warning or Info ? You choose !
      */
+
     public function alert($content, $type = 'success')
     {
         $this->session->getFlashBag()->add($type, $content);
     }
 
     /**
-     * Congrats user through flash bag : all happened successfully
+     * Congrats user through flash bag : all happened successfully.
+     *
      * @param string|array $content
      */
     public function congrat($content)
@@ -38,7 +40,8 @@ class AlertifyHelper {
     }
 
     /**
-     * Warn user through flash bag: something requires attention
+     * Warn user through flash bag: something requires attention.
+     *
      * @param string|array $content
      */
     public function warn($content)
@@ -47,7 +50,8 @@ class AlertifyHelper {
     }
 
     /**
-     * Inform user through flash bag: something have to be said
+     * Inform user through flash bag: something have to be said.
+     *
      * @param string|array $content
      */
     public function inform($content)
@@ -56,7 +60,8 @@ class AlertifyHelper {
     }
 
     /**
-     * Scold user through flas hbag: something went wrong
+     * Scold user through flas hbag: something went wrong.
+     *
      * @param string|array $content
      */
     public function scold($content)
