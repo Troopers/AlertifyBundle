@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 /**
  * AlertifyExtension
  */
-class AlertifyExtension extends \Twig_Extension
+class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
 {
     protected $environment;
     protected $defaultParameters;
@@ -41,15 +41,15 @@ class AlertifyExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return array(
-            'alertify' => new \Twig_Filter_Method($this, 'alertifyFilter', array('needs_environment' => true, 'is_safe' => array('html')))
-        );
+        return [
+            new \Twig_SimpleFilter('alertify', [$this, 'alertifyFilter'], ['needs_environment' => true, 'is_safe' => ['html']])
+        ];
     }
 
     /**
      * Alertify filter
-     * @param TwigEnvironment $environment
-     * @param Session         $session
+     * @param \Twig_Environment $environment
+     * @param Session           $session
      *
      * @return string
      */
