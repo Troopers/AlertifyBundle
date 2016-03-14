@@ -19,7 +19,8 @@ Declare in the config (or just use the default configuration) and dispatch alert
 * [Toastr](https://github.com/CodeSeven/toastr)
 * [TwitterBootstrap](http://twitter.github.com/bootstrap/javascript.html#modals)
 * [Noty](http://needim.github.com/noty/)
-* [Codrops notifications](http://tympanus.net/Development/NotificationStyles) `new`
+* [Codrops notifications](http://tympanus.net/Development/NotificationStyles)
+* [Notie.js](https://github.com/jaredreich/notie.js) `new`
 
 Installation
 ------------
@@ -52,7 +53,7 @@ For example, this code ...
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 ```
-and the same way for stylesheets.
+and the same way for stylesheets (if needded) and for each one of availables librairies (`alertify-notie`, `alertify-codrops-notification`...).
 
 ### manually
 

@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    // General
+    var shadow = {{ options.shadow|default("true") }};
+    var font_size_small = '{{ options.font_size_small|default('18px') }}';
+    var font_size_big = '{{ options.font_size_big|default('24px') }}';
+    var font_change_screen_width = {{ options.font_change_screen_width|default(600) }};
+    var animation_delay = {{ options.animation_delay|default(0.3) }};
+    var background_click_dismiss = {{ options.background_click_dismiss|default("true") }};
+
+    // notie.alert colors
+    var alert_color_success_background = '{{ options.alert_color_success_background|default('#57BF57') }}';
+    var alert_color_warning_background = '{{ options.alert_color_warning_background|default('#E3B771') }}';
+    var alert_color_error_background = '{{ options.alert_color_error_background|default('#E1715B') }}';
+    var alert_color_info_background = '{{ options.alert_color_info_background|default('#4D82D6') }}';
+    var alert_color_text = '{{ options.alert_color_text|default('#FFF') }}';
+
+    // notie.confirm colors
+    var confirm_and_input_color_background = '{{ options.confirm_and_input_color_background|default('#4D82D6') }}';
+    var confirm_and_input_color_yes_background = '{{ options.confirm_and_input_color_yes_background|default('#57BF57') }}';
+    var confirm_and_input_color_no_background = '{{ options.confirm_and_input_color_no_background|default('#E1715B') }}';
+    var confirm_and_input_color_text = '{{ options.confirm_and_input_color_text|default('#FFF') }}';
+    var confirm_and_input_color_yes_text = '{{ options.confirm_and_input_color_yes_text|default('#FFF') }}';
+    var confirm_and_input_color_no_text = '{{ options.confirm_and_input_color_no_text|default('#FFF') }}';
+
+    // ID's for use within your own .css file (OPTIONAL)
+    // (Be sure to use !important to override the javascript)
+    // Example: #notie-alert-inner { padding: 30px !important; }
+    var alert_outer_id = '{{ options.alert_outer_id|default('notie-alert-outer') }}';
+    var alert_inner_id = '{{ options.alert_inner_id|default('notie-alert-inner') }}';
+    var alert_text_id = '{{ options.alert_text_id|default('notie-alert-text') }}';
+    var confirm_outer_id = '{{ options.confirm_outer_id|default('notie-confirm-outer') }}';
+    var confirm_inner_id = '{{ options.confirm_inner_id|default('notie-confirm-inner') }}';
+    var confirm_backdrop_id = '{{ options.confirm_backdrop_id|default('notie-confirm-backdrop') }}';
+    var confirm_yes_id = '{{ options.confirm_yes_id|default('notie-confirm-yes') }}';
+    var confirm_no_id = '{{ options.confirm_no_id|default('notie-confirm-no') }}';
+    var confirm_text_id = '{{ options.confirm_text_id|default('notie-confirm-text') }}';
+    var confirm_yes_text_id = '{{ options.confirm_yes_text_id|default('notie-confirm-yes-text') }}';
+    var confirm_no_text_id = '{{ options.confirm_no_text_id|default('notie-confirm-no-text') }}';
+    var input_outer_id = '{{ options.input_outer_id|default('notie-input-outer') }}';
+    var input_inner_id = '{{ options.input_inner_id|default('notie-input-inner') }}';
+    var input_backdrop_id = '{{ options.input_backdrop_id|default('notie-input-backdrop') }} ';
+    var input_div_id = '{{ options.input_div_id|default('notie-input-div') }}';
+    var input_field_id = '{{ options.input_field_id|default('notie-input-field') }}';
+    var input_yes_id = '{{ options.input_yes_id|default('notie-input-yes') }}';
+    var input_no_id = '{{ options.input_no_id|default('notie-input-no') }}';
+    var input_text_id = '{{ options.input_text_id|default('notie-input-text') }}';
+    var input_yes_text_id = '{{ options.input_yes_text_id|default('notie-input-yes-text') }}';
+    var input_no_text_id = '{{ options.input_no_text_id|default('notie-input-no-text') }}';
+
+    {% set map = {'success': 1, 'warning': 2, 'error': 3, 'info': 4} %}
+    $(document).ready(function(){
+        notie.alert({{ attribute(map, type) }}, "{{ body|raw|trans({}, translationDomain|default('messages')) }}", {{ timeout|default(5) }});
+    });
+</script>
+
