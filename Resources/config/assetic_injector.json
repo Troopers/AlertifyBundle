@@ -17,6 +17,7 @@
                 "@AvAlertifyBundle/Resources/public/notie/notie.js"
             ],
             "alertify-codrops-notification": [
+                "@AvAlertifyBundle/Resources/public/codrops-notification/js/classie.js",
                 "@AvAlertifyBundle/Resources/public/codrops-notification/js/notificationFx.js"
             ]
         },
