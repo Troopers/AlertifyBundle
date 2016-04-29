@@ -5,7 +5,7 @@ namespace AppVentus\AlertifyBundle\Twig\Extension;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * AlertifyExtension
+ * AlertifyExtension.
  */
 class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
 {
@@ -13,7 +13,7 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     protected $defaultParameters;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function __construct($defaultParameters)
     {
@@ -21,7 +21,7 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function initRuntime(\Twig_Environment $environment)
     {
@@ -29,7 +29,7 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -37,17 +37,18 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('alertify', [$this, 'alertifyFilter'], ['needs_environment' => true, 'is_safe' => ['html']])
+            new \Twig_SimpleFilter('alertify', [$this, 'alertifyFilter'], ['needs_environment' => true, 'is_safe' => ['html']]),
         ];
     }
 
     /**
-     * Alertify filter
+     * Alertify filter.
+     *
      * @param \Twig_Environment $environment
      * @param Session           $session
      *
@@ -57,13 +58,13 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     {
         $flashes = $session->getFlashBag()->all();
 
-        $renders = array();
+        $renders = [];
         foreach ($flashes as $type => $flash) {
-            if ($type == "callback") {
+            if ($type == 'callback') {
                 foreach ($flash as $key => $currentFlash) {
                     $currentFlash['body'] .= $environment->render('AvAlertifyBundle:Modal:callback.html.twig', $currentFlash);
                     $session->getFlashBag()->add($currentFlash['engine'], $currentFlash);
-                    $renders[$type . $key] = $this->alertifyFilter($environment, $session);
+                    $renders[$type.$key] = $this->alertifyFilter($environment, $session);
                 }
             } else {
                 foreach ($flash as $key => $content) {
@@ -73,11 +74,11 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
                         $parameters = array_merge($defaultParameters, $content);
                     } else {
                         $defaultParameters = self::getDefaultParametersFromContext(null);
-                        $parameters = array_merge($defaultParameters, array('body' => $content));
+                        $parameters = array_merge($defaultParameters, ['body' => $content]);
                     }
 
                     $parameters['type'] = $type;
-                    $renders[$type . $key] = $environment->render('AvAlertifyBundle:Modal:'.$parameters['engine'].'.html.twig', $parameters);
+                    $renders[$type.$key] = $environment->render('AvAlertifyBundle:Modal:'.$parameters['engine'].'.html.twig', $parameters);
                 }
             }
         }
@@ -86,11 +87,12 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     }
 
     /**
-      * Get the configuration for the given context
-      * @param string $context The actual context
-      *
-      * @return array
-      **/
+     * Get the configuration for the given context.
+     *
+     * @param string $context The actual context
+     *
+     * @return array
+     **/
     public function getDefaultParametersFromContext($context = null)
     {
         if (count($this->defaultParameters['contexts'])) {
@@ -107,7 +109,5 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
 
         //else we return the default configuration
         return $this->defaultParameters['default'];
-
     }
-
 }
