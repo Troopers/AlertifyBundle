@@ -17,42 +17,39 @@
 </div>
 
 <script type="text/javascript">
-  $('#{{ id }}').modal({'show':true,'keyboard':true});
-$('#{{ id }} .{{ confirm_button_class }}').focus();
-  $('#{{ id }}').on('hide.bs.modal', function (e) {
-    $('.confirm-waiting').addClass('confirm');
-    $('.confirm-waiting').removeClass('confirm-waiting');
-    $('#{{ id }}').remove();
-  });
+    $('#{{ id }}').modal({'show':true,'keyboard':true});
+    $('#{{ id }} .{{ confirm_button_class }}').focus();
+    var initierElement = $('[data-toggle="confirm-waiting"]');
 
-$('#{{ id }} .{{ cancel_button_class }}').click(function(){
-  $('.confirm-waiting').addClass('confirm');
-  $('.confirm-waiting').removeClass('confirm-waiting');
-});
+    $(document).on("hide.bs.modal", '#{{ id }}', function (e) {
+        $(initierElement).attr('data-toggle', 'confirm');
+        $('#{{ id }}').remove();
+    });
+    $(document).on("click", '#{{ id }} .{{ cancel_button_class }}', function(){
+      $(initierElement).attr('data-toggle', 'confirm');
+    });
 
-{# if no callback were given, we submit or go to the url of given as parameter #}
-{% if confirmCallback == null %}
-$('#{{ id }} .{{ confirm_button_class }}').click(function(){
-  {% if type == "form" %}
-  var form = $('.confirm-waiting');
-  form.removeClass('confirm-waiting');
-    form.submit();
-    $('#{{ id }}').modal('hide')
+    {# if no callback were given, we submit or go to the url of given as parameter #}
+    {% if confirmCallback == null %}
+    $(document).on("click", '#{{ id }} .{{ confirm_button_class }}', function(){
+        {% if type == "form" %}
+            initierElement.removeAttr('toggle');
+            initierElement.submit();
+            $('#{{ id }}').modal('hide');
+        {% else %}
+            window.location = $('.confirm-waiting').attr('href');
+        {% endif %}
+    });
+    {% else %}
+        $(document).on("click", '#{{ id }} .{{ confirm_button_class }}', function(){
+            {{ confirmCallback }};
+            $('#{{ id }}').modal('hide');
+        });
+    {% endif %}
 
-  {% else %}
-    window.location = $('.confirm-waiting').attr('href');
-  {% endif %}
-});
-{% else %}
-$('#{{ id }} .{{ confirm_button_class }}').click(function(){
-    {{ confirmCallback }};
-    $('#{{ id }}').modal('hide');
-});
-{% endif %}
-
-$('#{{ id }}').focus(function(){
-  $('#{{ id }} .{{ confirm_button_class }}').focus();
-});
+    $(document).on("focus", '#{{ id }}', function(){
+      $('#{{ id }} .{{ confirm_button_class }}').focus();
+    });
 </script>
 
 

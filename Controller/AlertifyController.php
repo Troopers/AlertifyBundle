@@ -2,19 +2,21 @@
 
 namespace AppVentus\AlertifyBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * AdManager controller.
+ *
  * @Route("/alertify")
  */
 class AlertifyController extends Controller
 {
     /**
-     * Confirm modal
+     * Confirm modal.
+     *
      * @param Request $request An HTTP request.
      * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
      * @Template("AvAlertifyBundle:Modal:confirm.html.twig")
@@ -28,10 +30,10 @@ class AlertifyController extends Controller
             $confirmCallback = null;
         }
 
-        return array(
+        return [
             'title'                => $request->get('title'),
             'body'                 => $request->get('body'),
-            'id'                   => $request->get('id').rand(1,100).'-modal',
+            'id'                   => $request->get('id').rand(1, 100).'-modal',
             'cancel_button_class'  => $request->get('cancel_button_class', 'btn-cancel'),
             'confirm_button_class' => $request->get('confirm_button_class', 'btn-primary'),
             'cancel_button_value'  => $request->get('cancel_button_value'),
@@ -39,11 +41,12 @@ class AlertifyController extends Controller
             'modal_class'          => $request->get('modal_class'),
             'type'                 => $request->get('type'),
             'confirmCallback'      => $confirmCallback,
-        );
+        ];
     }
 
     /**
-     * Ajax
+     * Ajax.
+     *
      * @param Request $request An HTTP request.
      * @Route("/ajax", name="alertify_ajax", options={"expose"=true})
      * @Template("AvAlertifyBundle:Modal:ajax.html.twig")
@@ -52,10 +55,9 @@ class AlertifyController extends Controller
      */
     public function ajaxAction(Request $request)
     {
-        $options = array();
+        $options = [];
         if ($context = $request->request->get('context')) {
-
-            $options = $this->container->getParameter('av_alertify.contexts.' . $context);
+            $options = $this->container->getParameter('av_alertify.contexts.'.$context);
         }
 
         foreach ($request->request->all() as $name => $option) {
@@ -66,6 +68,6 @@ class AlertifyController extends Controller
             $this->get('session')->getFlashBag()->add($request->get('main_type'), $options);
         }
 
-        return array();
+        return [];
     }
 }

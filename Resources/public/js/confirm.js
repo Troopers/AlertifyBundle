@@ -1,34 +1,32 @@
-$(document).on('submit','form.confirm, form[data-toggle="confirm"]',function(e){
-    smartConfirm(e,this,'form');
+$(document).on('submit','form[data-toggle="confirm"]',function(e){
+    smartConfirm(e, this, 'form');
 });
 
-$(document).on('click','a.confirm, a[data-toggle="confirm"]',function(e){
-    smartConfirm(e,this,'a');
+$(document).on('click','a[data-toggle="confirm"]',function(e){
+    smartConfirm(e, this, 'a');
 });
 
-function smartConfirm(e,referer,type){
-
-    if ($(e.target).hasClass('confirm')) {
-        console.warn('DEPRECATION MESSAGE | Alertify - Confirm - Please do not use class="confirm" anymore and replace it by data-toggle="confirm"');
-    }
-    if($(referer).attr('data-confirm-field-id') != undefined && $('#'+$(referer).attr('data-confirm-field-id')).attr('checked') == "checked" ){
+/**
+ * Get a modal to ask some confirmation.
+ */
+function smartConfirm(e, element, type){
+    if ($(element).attr('data-confirm-field-id') != undefined && $('#'+$(element).attr('data-confirm-field-id')).attr('checked') == "checked" ) {
         return true;
     }
     e.preventDefault();
-    $(referer).removeClass('confirm');
-    $(referer).addClass('confirm-waiting');
+    $(element).attr('data-toggle', 'confirm-waiting');
     $.post(
         Routing.generate('alertify_confirm'),
         {
-            title: $(referer).attr('data-title'),
-            body: $(referer).attr('data-body'),
-            confirm_callback: $(referer).attr('data-confirm-callback'),
-            cancel_button_class: $(referer).attr('data-cancel-button-class'),
-            confirm_button_class: $(referer).attr('data-confirm-button-class'),
-            cancel_button_value: $(referer).attr('data-cancel-button-value'),
-            confirm_button_value: $(referer).attr('data-confirm-button-value'),
-            modal_class: $(referer).attr('data-confirm-class'),
-            id: $(referer).attr('id'),
+            title: $(element).attr('data-title'),
+            body: $(element).attr('data-body'),
+            confirm_callback: $(element).attr('data-confirm-callback'),
+            cancel_button_class: $(element).attr('data-cancel-button-class'),
+            confirm_button_class: $(element).attr('data-confirm-button-class'),
+            cancel_button_value: $(element).attr('data-cancel-button-value'),
+            confirm_button_value: $(element).attr('data-confirm-button-value'),
+            modal_class: $(element).attr('data-confirm-class'),
+            id: $(element).attr('id'),
             type: type
         },
         function(data){
