@@ -41,8 +41,8 @@
         {% endif %}
     });
     {% else %}
-        $(document).on("click", '#{{ id }} .{{ confirm_button_class }}', function(){
-            {{ confirmCallback }};
+    $(document).on("click", '#{{ id }} .{{ confirm_button_class }}', function(){
+            {{ confirmCallback|raw }}
             $('#{{ id }}').modal('hide');
         });
     {% endif %}
