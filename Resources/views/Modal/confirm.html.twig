@@ -3,10 +3,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">{{title}}</h3>
+                <h3 id="myModalLabel">{{ title|raw }}</h3>
             </div>
             <div class="modal-body">
-                {{body|raw}}
+                {{ body|raw }}
             </div>
             <div class="modal-footer">
                 <button class="btn {{ cancel_button_class }}" data-dismiss="modal" aria-hidden="true">{{ cancel_button_value ? cancel_button_value : 'modal.confirm.button.cancel'|trans({}, 'alertify') }}</button>
