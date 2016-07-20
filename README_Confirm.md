@@ -22,7 +22,7 @@ Add this to your template:
 
 Add the following attributes to your link|form tag :
 
-- data-toggle="confirm" // class="confirm" (depreciated)
+- data-toggle="confirm"
 - data-confirm-class="myModal"
 - data-title="Are you sure ?"
 - data-body="This is forever !"
