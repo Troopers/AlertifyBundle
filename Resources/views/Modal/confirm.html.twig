@@ -37,7 +37,7 @@
             initierElement.submit();
             $('#{{ id }}').modal('hide');
         {% else %}
-            window.location = $('.confirm-waiting').attr('href');
+            window.location = $('[data-toggle="confirm-waiting"]').attr('href');
         {% endif %}
     });
     {% else %}
