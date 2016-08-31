@@ -43,6 +43,10 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('engine')->defaultValue('toastr')->cannotBeEmpty()->end()
                         ->scalarNode('layout')->defaultNull()->end()
                         ->scalarNode('translationDomain')->defaultValue('alertify')->cannotBeEmpty()->end()
+                        ->arrayNode('options')
+                            ->useAttributeAsKey(true)
+                            ->prototype('scalar')
+                        ->end()
                     ->end()
                 ->end()
             ->end();
