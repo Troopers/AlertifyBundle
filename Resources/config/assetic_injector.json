@@ -29,6 +29,9 @@
             "alertify-noty": [
                 "@AvAlertifyBundle/Resources/public/noty/css/jquery.noty.css"
             ],
+            "alertify-notie": [
+                "@AvAlertifyBundle/Resources/public/notie/notie.css"
+            ],
             "alertify-codrops-notification": [
                 "@AvAlertifyBundle/Resources/public/codrops-notification/less/ns-default.less",
                 "@AvAlertifyBundle/Resources/public/codrops-notification/less/ns-style-bar.less",
