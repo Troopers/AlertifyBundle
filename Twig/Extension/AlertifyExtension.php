@@ -71,10 +71,10 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
                     if (is_array($content)) {
                         $context = isset($content['context']) ? $content['context'] : null;
                         $defaultParameters = self::getDefaultParametersFromContext($context);
-                        $parameters = array_merge_recursive($defaultParameters, $content);
+                        $parameters = array_replace_recursive($defaultParameters, $content);
                     } else {
                         $defaultParameters = self::getDefaultParametersFromContext(null);
-                        $parameters = array_merge($defaultParameters, ['body' => $content]);
+                        $parameters = array_replace($defaultParameters, ['body' => $content]);
                     }
 
                     $parameters['type'] = $type;
