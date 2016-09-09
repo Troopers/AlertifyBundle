@@ -27,12 +27,9 @@
         hideMethod     : '{{ options.hideMethod|default('fadeOut') }}'
     };
 
-    //Available options
-    // toastr.options = {
-    // }
-
+    var body = "{{ body|replace('\r\n|\n|\r', '<br/>')|raw }}";
     delay({% if timeout is defined and timeout != null %} {{ timeout }}{% else %} 1000{% endif %} , function() {
-        return toastr.{{ type }}("{{ body|raw|trans({}, translationDomain|default('messages')) }}","{{ title|default(("alert."~type~".label")|trans({}, translationDomain|default('messages'))) }}");
+        return toastr.{{ type }}(body,"{{ title|default(("alert."~type~".label")|trans({}, translationDomain|default('messages'))) }}");
     });
 
 }).call(this);
