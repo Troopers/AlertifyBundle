@@ -14,18 +14,17 @@
     //
     toastr.options = {
         positionClass    : 'toast-{{ layout }}', //top-right, top-left, top-full-width, bottom-right, bottom-left, bottom-full-width
-        closeButton    : {{ closeButton|default('false') }},
-        debug          : {{ debug|default('false') }},
-        positionClass  : '{{ positionClass|default('toast-top-right') }}',
-        onclick        : {{ onclick|default('null') }},
-        showDuration   : {{ showDuration|default('20000') }},
-        hideDuration   : {{ hideDuration|default('1000') }},
-        timeOut        : {{ timeOut|default('5000') }},
-        extendedTimeOut: {{ extendedTimeOut|default('1000') }},
-        showEasing     : '{{ showEasing|default('swing') }}',
-        hideEasing     : '{{ hideEasing|default('linear') }}',
-        showMethod     : '{{ showMethod|default('fadeIn') }}',
-        hideMethod     : '{{ hideMethod|default('fadeOut') }}'
+        closeButton    : {{ options.closeButton|default('false') }},
+        debug          : {{ options.debug|default('false') }},
+        onclick        : {{ options.onclick|default('null') }},
+        showDuration   : {{ options.showDuration|default('20000') }},
+        hideDuration   : {{ options.hideDuration|default('1000') }},
+        timeOut        : {{ options.timeOut|default('5000') }},
+        extendedTimeOut: {{ options.extendedTimeOut|default('1000') }},
+        showEasing     : '{{ options.showEasing|default('swing') }}',
+        hideEasing     : '{{ options.hideEasing|default('linear') }}',
+        showMethod     : '{{ options.showMethod|default('fadeIn') }}',
+        hideMethod     : '{{ options.hideMethod|default('fadeOut') }}'
     };
 
     //Available options
