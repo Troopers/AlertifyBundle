@@ -1,10 +1,9 @@
-[![AppVentus](https://github.com/AppVentus/AvAlertifyBundle/blob/master/Media/appventus.png)](http://appventus.com)
+[![Troopers](https://cloud.githubusercontent.com/assets/618536/18787530/83cf424e-81a3-11e6-8f66-cde3ec5fa82a.png)](http://troopers.agency)
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AppVentus/AvAlertifyBundle)
-[![License](https://img.shields.io/packagist/l/appventus/alertify-bundle.svg)](https://packagist.org/packages/appventus/alertify-bundle)
-[![Version](https://img.shields.io/packagist/v/appventus/alertify-bundle.svg)](https://packagist.org/packages/appventus/alertify-bundle)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Troopers/TroopersAlertifyBundle)
+[![License](https://img.shields.io/packagist/l/troopers/alertify-bundle.svg)](https://packagist.org/packages/troopers/alertify-bundle)
+[![Version](https://img.shields.io/packagist/v/troopers/alertify-bundle.svg)](https://packagist.org/packages/troopers/alertify-bundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e/mini.png)](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e)
-[![Dependency Status](https://www.versioneye.com/php/appventus:alertify-bundle/dev-master/badge.svg)](https://www.versioneye.com/php/appventus:alertify-bundle/dev-master)
 =============
 
 Alertify Bundle
@@ -27,7 +26,7 @@ Installation
 
 First, require it thanks to composer:
 
-    composer.phar require appventus/alertify-bundle:dev-master
+    composer.phar require troopers/alertify-bundle:dev-master
 
 
 Add it in your AppKernel.php:
@@ -35,12 +34,12 @@ Add it in your AppKernel.php:
     public function registerBundles() {
         $bundles = array(
             [...]
-            new AppVentus\AlertifyBundle\AvAlertifyBundle(),
+            new Troopers\AlertifyBundle\TroopersAlertifyBundle(),
             [...]
 
 To include the library of your choice, you have these 2 methods :
 
-### automatically with [https://github.com/AppVentus/AsseticInjectorBundle](AsseticInjectorBundle) (*recommended*)
+### automatically with [https://github.com/Troopers/AsseticInjectorBundle](AsseticInjectorBundle) (*recommended*)
 
 Just add the name of the resource tag (e.g alertify-toastr) in your regular assetic's block.
 
@@ -61,7 +60,7 @@ If you want to do this  manually, you'll have to read the Resources/config/asset
 
 ```twig
     {% javascripts
-        '@AvAlertifyBundle/Resources/public/toastr/js/toastr.js'
+        '@TroopersAlertifyBundle/Resources/public/toastr/js/toastr.js'
      %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -74,7 +73,7 @@ Configuration ?
 To define the default configuration of your alerts, you can add the following lines in your config.yml :
 
 ```yml
-av_alertify:
+troopers_alertify:
     contexts:
         front:
             engine: "toastr"              \#Could be noty, modal, toastr or your own
@@ -92,7 +91,7 @@ av_alertify:
 By default, even if you do not declare any context, Alertify setup default values. You can override these settings easily like this:
 
  ```yml
-av_alertify:
+troopers_alertify:
     default:
         context: app                \#default: front
         engine: noty                \#default: toastr
@@ -119,17 +118,17 @@ Now, anywhere, you can put your alert in the flash session and enjoy.
     $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok');
     $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok', 'context' => 'front');
 
-You can use the `appventus_alertifybundle.helper.alertifyhelper` service to ease the alert creation :
+You can use the `troopers_alertifybundle.helper.alertifyhelper` service to ease the alert creation :
 
-    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->congrat('TEST');
-    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->warn('TEST');
-    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->inform('TEST');
-    $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold('TEST');
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->congrat('TEST');
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->warn('TEST');
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->inform('TEST');
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->scold('TEST');
 
 You can also use the AlertifyControllerTrait to have simple methods in controller :
 
 ```php
-use AppVentus\AlertifyBundle\Controller\AlertifyControllerTrait;
+use Troopers\AlertifyBundle\Controller\AlertifyControllerTrait;
 
 class MyController extends ...
 {
@@ -167,11 +166,11 @@ If you have two contexts in your application (front and back for example), I spu
 <a name="use-my-own-alert-system"></a>Display alerts with a custom library
 ------------
 
-AvAlertify comes with some librairies to ease use but it's free to you to use custom Library (feel free to make a Pull request, your library could interest community :).
+TroopersAlertify comes with some librairies to ease use but it's free to you to use custom Library (feel free to make a Pull request, your library could interest community :).
 You just have to follow these steps :
 
 ```yml
-av_alertify:
+troopers_alertify:
     contexts:
         front:
             engine: "myOwnSystem"
@@ -179,7 +178,7 @@ av_alertify:
             translationDomain: "messages"
 ```
 
-Then just override app/Resources/AvAlertifyBundle/views/Modal/**myOwnSystem**.html.twig and add the alert initialization.
+Then just override app/Resources/TroopersAlertifyBundle/views/Modal/**myOwnSystem**.html.twig and add the alert initialization.
 
 Options
 ------------
@@ -245,4 +244,4 @@ Confirm modal
 -------------
 
 After a link's clic or form's submission, we sometimes want to prompt the user to be sure he understood what he did.
-You can make it as a simply way by following the doc here : (https://github.com/AppVentus/AvAlertifyBundle/blob/master/README_Confirm.md)
+You can make it as a simply way by following the doc here : (https://github.com/Troopers/TroopersAlertifyBundle/blob/master/README_Confirm.md)

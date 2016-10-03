@@ -1,32 +1,35 @@
 {
-    "name": "appventus/alertify-bundle",
+    "name": "troopers/alertify-bundle",
     "type": "symfony-bundle",
     "description": "Symfony AlertifyBundle",
     "keywords": ["alert", "bootstrap"],
-    "homepage": "https://github.com/AppVentus/AvAlertifyBundle",
+    "homepage": "https://github.com/Troopers/TroopersAlertifyBundle",
     "license": "MIT",
     "authors": [
         {
             "name": "Paul Andrieux",
-            "email": "paul@appventus.com",
-            "homepage": "http://appventus.com"
+            "email": "paul@troopers.email",
+            "homepage": "http://troopers.agency"
         },
         {
             "name": "Leny Bernard",
-            "email": "leny@appventus.com",
-            "homepage": "http://appventus.com"
+            "email": "leny@troopers.email",
+            "homepage": "http://troopers.agency"
         }
     ],
     "require": {
         "friendsofsymfony/jsrouting-bundle": "2.0.*@dev"
     },
+    "suggest": {
+        "troopers/assetic-injector-bundle": "~1.1"
+    },
     "require-dev": {
         "symfony/class-loader": "~2.1"
     },
     "autoload": {
-        "psr-0": { "AppVentus\\AlertifyBundle": "" }
+        "psr-0": { "Troopers\\AlertifyBundle": "" }
     },
-    "target-dir": "AppVentus/AlertifyBundle",
+    "target-dir": "Troopers/AlertifyBundle",
 
     "minimum-stability": "dev",
     "extra": {

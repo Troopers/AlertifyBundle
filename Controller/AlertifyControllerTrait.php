@@ -1,6 +1,6 @@
 <?php
 
-namespace AppVentus\AlertifyBundle\Controller;
+namespace Troopers\AlertifyBundle\Controller;
 
 /**
  * @property Container container
@@ -15,7 +15,7 @@ trait AlertifyControllerTrait
      */
     public function alert($content, $type = 'success')
     {
-        $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->alert($content, $type);
+        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->alert($content, $type);
     }
 
     /**
@@ -25,7 +25,7 @@ trait AlertifyControllerTrait
      */
     public function congrat($content)
     {
-        $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->congrat($content);
+        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->congrat($content);
     }
 
     /**
@@ -35,7 +35,7 @@ trait AlertifyControllerTrait
      */
     public function warn($content)
     {
-        $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->warn($content);
+        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->warn($content);
     }
 
     /**
@@ -45,7 +45,7 @@ trait AlertifyControllerTrait
      */
     public function inform($content)
     {
-        $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->inform($content);
+        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->inform($content);
     }
 
     /**
@@ -55,6 +55,6 @@ trait AlertifyControllerTrait
      */
     public function scold($content)
     {
-        $this->container->get('appventus_alertifybundle.helper.alertifyhelper')->scold($content);
+        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->scold($content);
     }
 }
