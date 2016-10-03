@@ -4,40 +4,40 @@
         "javascripts":
         {
             "foot": [
-                "@AvAlertifyBundle/Resources/public/js/confirm.js",
-                "@AvAlertifyBundle/Resources/public/js/alertify.js"
+                "@TroopersAlertifyBundle/Resources/public/js/confirm.js",
+                "@TroopersAlertifyBundle/Resources/public/js/alertify.js"
             ],
             "alertify-toastr": [
-                "@AvAlertifyBundle/Resources/public/toastr/js/toastr.js"
+                "@TroopersAlertifyBundle/Resources/public/toastr/js/toastr.js"
             ],
             "alertify-noty": [
-                "@AvAlertifyBundle/Resources/public/noty/js/jquery.noty.js"
+                "@TroopersAlertifyBundle/Resources/public/noty/js/jquery.noty.js"
             ],
             "alertify-notie": [
-                "@AvAlertifyBundle/Resources/public/notie/notie.js"
+                "@TroopersAlertifyBundle/Resources/public/notie/notie.js"
             ],
             "alertify-codrops-notification": [
-                "@AvAlertifyBundle/Resources/public/codrops-notification/js/classie.js",
-                "@AvAlertifyBundle/Resources/public/codrops-notification/js/notificationFx.js"
+                "@TroopersAlertifyBundle/Resources/public/codrops-notification/js/classie.js",
+                "@TroopersAlertifyBundle/Resources/public/codrops-notification/js/notificationFx.js"
             ]
         },
         "stylesheets":
         {
             "alertify-toastr": [
-                "@AvAlertifyBundle/Resources/public/toastr/css/toastr.css"
+                "@TroopersAlertifyBundle/Resources/public/toastr/css/toastr.css"
             ],
             "alertify-noty": [
-                "@AvAlertifyBundle/Resources/public/noty/css/jquery.noty.css"
+                "@TroopersAlertifyBundle/Resources/public/noty/css/jquery.noty.css"
             ],
             "alertify-notie": [
-                "@AvAlertifyBundle/Resources/public/notie/notie.css"
+                "@TroopersAlertifyBundle/Resources/public/notie/notie.css"
             ],
             "alertify-codrops-notification": [
-                "@AvAlertifyBundle/Resources/public/codrops-notification/less/ns-default.less",
-                "@AvAlertifyBundle/Resources/public/codrops-notification/less/ns-style-bar.less",
-                "@AvAlertifyBundle/Resources/public/codrops-notification/less/ns-style-attached.less",
-                "@AvAlertifyBundle/Resources/public/codrops-notification/less/ns-style-growl.less",
-                "@AvAlertifyBundle/Resources/public/codrops-notification/less/ns-style-other.less"
+                "@TroopersAlertifyBundle/Resources/public/codrops-notification/less/ns-default.less",
+                "@TroopersAlertifyBundle/Resources/public/codrops-notification/less/ns-style-bar.less",
+                "@TroopersAlertifyBundle/Resources/public/codrops-notification/less/ns-style-attached.less",
+                "@TroopersAlertifyBundle/Resources/public/codrops-notification/less/ns-style-growl.less",
+                "@TroopersAlertifyBundle/Resources/public/codrops-notification/less/ns-style-other.less"
             ]
         }
     }

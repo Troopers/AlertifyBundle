@@ -1,4 +1,4 @@
-av_alertify:
-    resource: "@AvAlertifyBundle/Controller/"
+troopers_alertify:
+    resource: "@TroopersAlertifyBundle/Controller/"
     type:     annotation
     prefix:   /

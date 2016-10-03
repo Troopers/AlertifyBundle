@@ -9,8 +9,8 @@ Please note that [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsR
 
 Add this to your routing.yml file:
 
-	AvAlertifyBundle:
-	    resource: "@AvAlertifyBundle/Controller/"
+	TroopersAlertifyBundle:
+	    resource: "@TroopersAlertifyBundle/Controller/"
 	    type:     annotation
 	    prefix:   /
 

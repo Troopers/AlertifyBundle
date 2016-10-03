@@ -1,6 +1,6 @@
 <?php
 
-namespace AppVentus\AlertifyBundle\Helper;
+namespace Troopers\AlertifyBundle\Helper;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 

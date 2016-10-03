@@ -1,6 +1,6 @@
 <?php
 
-namespace AppVentus\AlertifyBundle\Controller;
+namespace Troopers\AlertifyBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -19,7 +19,7 @@ class AlertifyController extends Controller
      *
      * @param Request $request An HTTP request.
      * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
-     * @Template("AvAlertifyBundle:Modal:confirm.html.twig")
+     * @Template("TroopersAlertifyBundle:Modal:confirm.html.twig")
      *
      * @return array
      */
@@ -49,7 +49,7 @@ class AlertifyController extends Controller
      *
      * @param Request $request An HTTP request.
      * @Route("/ajax", name="alertify_ajax", options={"expose"=true})
-     * @Template("AvAlertifyBundle:Modal:ajax.html.twig")
+     * @Template("TroopersAlertifyBundle:Modal:ajax.html.twig")
      *
      * @return array
      */
@@ -57,7 +57,7 @@ class AlertifyController extends Controller
     {
         $options = [];
         if ($context = $request->request->get('context')) {
-            $options = $this->container->getParameter('av_alertify.contexts.'.$context);
+            $options = $this->container->getParameter('troopers_alertify.contexts.'.$context);
         }
 
         foreach ($request->request->all() as $name => $option) {

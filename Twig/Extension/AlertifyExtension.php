@@ -1,6 +1,6 @@
 <?php
 
-namespace AppVentus\AlertifyBundle\Twig\Extension;
+namespace Troopers\AlertifyBundle\Twig\Extension;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -62,7 +62,7 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
         foreach ($flashes as $type => $flash) {
             if ($type == 'callback') {
                 foreach ($flash as $key => $currentFlash) {
-                    $currentFlash['body'] .= $environment->render('AvAlertifyBundle:Modal:callback.html.twig', $currentFlash);
+                    $currentFlash['body'] .= $environment->render('TroopersAlertifyBundle:Modal:callback.html.twig', $currentFlash);
                     $session->getFlashBag()->add($currentFlash['engine'], $currentFlash);
                     $renders[$type.$key] = $this->alertifyFilter($environment, $session);
                 }
@@ -78,7 +78,7 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
                     }
 
                     $parameters['type'] = $type;
-                    $renders[$type.$key] = $environment->render('AvAlertifyBundle:Modal:'.$parameters['engine'].'.html.twig', $parameters);
+                    $renders[$type.$key] = $environment->render('TroopersAlertifyBundle:Modal:'.$parameters['engine'].'.html.twig', $parameters);
                 }
             }
         }

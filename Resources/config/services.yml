@@ -1,12 +1,12 @@
 parameters:
-    twig.extension.alertify.class: AppVentus\AlertifyBundle\Twig\Extension\AlertifyExtension
+    twig.extension.alertify.class: Troopers\AlertifyBundle\Twig\Extension\AlertifyExtension
 services:
     twig.extension.alertify:
         class: %twig.extension.alertify.class%
         arguments:
-            - "%av_alertify%"
+            - "%troopers_alertify%"
         tags:
             - { name: twig.extension }
-    appventus_alertifybundle.helper.alertifyhelper:
-        class: AppVentus\AlertifyBundle\Helper\AlertifyHelper
+    troopers_alertifybundle.helper.alertifyhelper:
+        class: Troopers\AlertifyBundle\Helper\AlertifyHelper
         arguments: [ @session ]
