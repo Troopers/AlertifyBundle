@@ -19,7 +19,7 @@ Declare in the config (or just use the default configuration) and dispatch alert
 * [TwitterBootstrap](http://twitter.github.com/bootstrap/javascript.html#modals)
 * [Noty](http://needim.github.com/noty/)
 * [Codrops notifications](http://tympanus.net/Development/NotificationStyles)
-* [Notie.js](https://github.com/jaredreich/notie.js) `new`
+* [Notie.js](https://github.com/jaredreich/notie.js)
 
 Installation
 ------------
