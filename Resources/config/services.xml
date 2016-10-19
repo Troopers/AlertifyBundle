@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="alertify.handler.session.class">Troopers\AlertifyBundle\Handler\AlertifySessionHandler</parameter>
+        <parameter key="alertify.helper.class">Troopers\AlertifyBundle\Helper\AlertifyHelper</parameter>
+        <parameter key="alertify.event_listener">Troopers\AlertifyBundle\EventListener\AlertifyListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="troopers_alertifybundle.helper.alertifyhelper" class="%alertify.helper.class%">
+            <argument type="service" id="session" />
+        </service>
+        <service id="troopers_alertifybundle.session_handler" class="%alertify.handler.session.class%">
+            <argument type="service" id="twig" />
+            <argument>%troopers_alertify%</argument>
+        </service>
+    </services>
+</container>
