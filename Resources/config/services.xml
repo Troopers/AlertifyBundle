@@ -11,7 +11,7 @@
     </parameters>
 
     <services>
-        <service id="troopers_alertifybundle.helper.alertifyhelper" class="%alertify.helper.class%">
+        <service id="alertify" class="%alertify.helper.class%">
             <argument type="service" id="session" />
         </service>
         <service id="troopers_alertifybundle.session_handler" class="%alertify.handler.session.class%">

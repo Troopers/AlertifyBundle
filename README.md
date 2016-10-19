@@ -105,25 +105,15 @@ troopers_alertify:
 How to ?
 ------------
 
-It's easy to use, just follow the following:
-
-Add this block at the end of your twig layout:
-
-     {% block alertify %}
-        {{ app.session|alertify|raw }}
-     {% endblock %}
-
-Now, anywhere, you can put your alert in the flash session and enjoy.
-
     $this->get('session')->getFlashBag()->add('success', 'ok');
     $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok', 'context' => 'front', 'options' => ['option1' => 'custom value']);
 
-You can use the `troopers_alertifybundle.helper.alertifyhelper` service to ease the alert creation :
+You can use the `alertify` service to ease the alert creation :
 
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->congrat('TEST', $options);
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->warn('TEST', $options);
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->inform('TEST', $options);
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->scold('TEST', $options);
+    $this->container->get('alertify')->congrat('TEST', $options);
+    $this->container->get('alertify')->warn('TEST', $options);
+    $this->container->get('alertify')->inform('TEST', $options);
+    $this->container->get('alertify')->scold('TEST', $options);
 
 You can also use the AlertifyControllerTrait to have simple methods in controller :
 

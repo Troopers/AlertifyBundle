@@ -18,7 +18,7 @@ trait AlertifyControllerTrait
      */
     public function alert($content, $type = 'success', $options = [])
     {
-        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->alert($content, $type, $options);
+        $this->container->get('alertify')->alert($content, $type, $options);
     }
 
     /**
@@ -29,7 +29,7 @@ trait AlertifyControllerTrait
      */
     public function congrat($content, $options = [])
     {
-        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->congrat($content, $options);
+        $this->container->get('alertify')->congrat($content, $options);
     }
 
     /**
@@ -40,7 +40,7 @@ trait AlertifyControllerTrait
      */
     public function warn($content, $options = [])
     {
-        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->warn($content, $options);
+        $this->container->get('alertify')->warn($content, $options);
     }
 
     /**
@@ -51,7 +51,7 @@ trait AlertifyControllerTrait
      */
     public function inform($content, $options = [])
     {
-        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->inform($content, $options);
+        $this->container->get('alertify')->inform($content, $options);
     }
 
     /**
@@ -62,6 +62,6 @@ trait AlertifyControllerTrait
      */
     public function scold($content, $options = [])
     {
-        $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->scold($content, $options);
+        $this->container->get('alertify')->scold($content, $options);
     }
 }
