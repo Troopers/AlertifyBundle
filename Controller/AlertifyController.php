@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Alertify controller.
- *
  */
 class AlertifyController extends Controller
 {
