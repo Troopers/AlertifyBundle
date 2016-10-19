@@ -1,0 +1,16 @@
+{{ dump(options) }}
+<script type="text/javascript">
+    Push.create('{{ title|default(body)|trans({}, translationDomain|default('messages'))|striptags }}', {
+        body: '{{ title|default(false) ? body|trans({}, translationDomain|default('messages'))|striptags : null }}',
+        icon: {
+        {% if options.icon_x16 is defined %}
+            x16: '{{ options.icon_x16 }}'{% if options.icon_x32 is defined %},{% endif %}
+        {% endif %}
+
+        {% if options.icon_x32 is defined %}
+            x32: '{{ options.icon_x32 }}'
+        {% endif %}
+        },
+        timeout: {{ timeout|default(5000) }}
+    });
+</script>

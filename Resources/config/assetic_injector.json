@@ -10,6 +10,9 @@
             "alertify-toastr": [
                 "@TroopersAlertifyBundle/Resources/public/toastr/js/toastr.js"
             ],
+            "alertify-pushjs": [
+                "@TroopersAlertifyBundle/Resources/public/push.js/push.min.js"
+            ],
             "alertify-noty": [
                 "@TroopersAlertifyBundle/Resources/public/noty/js/jquery.noty.js"
             ],
