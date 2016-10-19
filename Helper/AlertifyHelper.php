@@ -20,6 +20,7 @@ class AlertifyHelper
 
     /**
      * Alert message to flash bag.
+     *
      * @param string $content
      * @param string $type
      * @param array  $options
@@ -33,7 +34,7 @@ class AlertifyHelper
         }
 
         $content = array_merge($content, [
-            'options' => $options
+            'options' => $options,
         ]);
 
         $this->session->getFlashBag()->add($type, $content);
