@@ -1,60 +1,45 @@
 <?php
 
-namespace Troopers\AlertifyBundle\Twig\Extension;
+namespace Troopers\AlertifyBundle\Handler;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * AlertifyExtension.
+ * AlertifySessionHandler.
  */
-class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
+class AlertifySessionHandler
 {
-    protected $environment;
-    protected $defaultParameters;
+    /**
+     * @var \Twig_Environment
+     */
+    protected $twig;
 
     /**
-     * {@inheritdoc}
+     * @var array
      */
-    public function __construct($defaultParameters)
+    private $defaultParameters;
+
+    /**
+     * AlertifySessionHandler constructor.
+     *
+     * @param \Twig_Environment $twig
+     * @param array             $defaultParameters
+     */
+    public function __construct(\Twig_Environment $twig, array $defaultParameters)
     {
+        $this->twig = $twig;
         $this->defaultParameters = $defaultParameters;
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function initRuntime(\Twig_Environment $environment)
-    {
-        $this->environment = $environment;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'alertify';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getFilters()
-    {
-        return [
-            new \Twig_SimpleFilter('alertify', [$this, 'alertifyFilter'], ['needs_environment' => true, 'is_safe' => ['html']]),
-        ];
-    }
-
-    /**
-     * Alertify filter.
+     * Alertify .
      *
-     * @param \Twig_Environment $environment
+     * @param \Twig_Environment $this-twig
      * @param Session           $session
      *
      * @return string
      */
-    public function alertifyFilter($environment, Session $session)
+    public function handle($session)
     {
         $flashes = $session->getFlashBag()->all();
 
@@ -62,9 +47,9 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
         foreach ($flashes as $type => $flash) {
             if ($type == 'callback') {
                 foreach ($flash as $key => $currentFlash) {
-                    $currentFlash['body'] .= $environment->render('TroopersAlertifyBundle::callback.html.twig', $currentFlash);
+                    $currentFlash['body'] .= $this->twig->render('TroopersAlertifyBundle::callback.html.twig', $currentFlash);
                     $session->getFlashBag()->add($currentFlash['engine'], $currentFlash);
-                    $renders[$type.$key] = $this->alertifyFilter($environment, $session);
+                    $renders[$type.$key] = $this->handle($session);
                 }
             } else {
                 foreach ($flash as $key => $content) {
@@ -78,7 +63,7 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
                     }
 
                     $parameters['type'] = $type;
-                    $renders[$type.$key] = $environment->render('TroopersAlertifyBundle::'.$parameters['engine'].'.html.twig', $parameters);
+                    $renders[$type.$key] = $this->twig->render('TroopersAlertifyBundle::'.$parameters['engine'].'.html.twig', $parameters);
                 }
             }
         }
