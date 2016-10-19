@@ -8,9 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * AdManager controller.
+ * Alertify controller.
  *
- * @Route("/alertify")
  */
 class AlertifyController extends Controller
 {
@@ -19,7 +18,7 @@ class AlertifyController extends Controller
      *
      * @param Request $request An HTTP request.
      * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
-     * @Template("TroopersAlertifyBundle:Modal:confirm.html.twig")
+     * @Template("TroopersAlertifyBundle::confirm.html.twig")
      *
      * @return array
      */
@@ -49,7 +48,7 @@ class AlertifyController extends Controller
      *
      * @param Request $request An HTTP request.
      * @Route("/ajax", name="alertify_ajax", options={"expose"=true})
-     * @Template("TroopersAlertifyBundle:Modal:ajax.html.twig")
+     * @Template("TroopersAlertifyBundle::ajax.html.twig")
      *
      * @return array
      */
