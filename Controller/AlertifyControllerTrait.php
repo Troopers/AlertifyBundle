@@ -1,6 +1,7 @@
 <?php
 
 namespace Troopers\AlertifyBundle\Controller;
+
 use Symfony\Component\DependencyInjection\Container;
 
 /**
