@@ -1,4 +1,3 @@
-{{ dump(options) }}
 <script type="text/javascript">
     Push.create('{{ title|default(body)|trans({}, translationDomain|default('messages'))|striptags }}', {
         body: '{{ title|default(false) ? body|trans({}, translationDomain|default('messages'))|striptags : null }}',

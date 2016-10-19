@@ -78,7 +78,7 @@ class AlertifySessionHandler
      *
      * @return array
      **/
-    public function getDefaultParametersFromContext($context = null)
+    protected function getDefaultParametersFromContext($context = null)
     {
         if (count($this->defaultParameters['contexts'])) {
             //If context is not given, just take the default one

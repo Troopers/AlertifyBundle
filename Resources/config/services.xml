@@ -4,6 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="alertify.twig.extension.class">Troopers\AlertifyBundle\Twig\Extension\AlertifyExtension</parameter>
         <parameter key="alertify.handler.session.class">Troopers\AlertifyBundle\Handler\AlertifySessionHandler</parameter>
         <parameter key="alertify.helper.class">Troopers\AlertifyBundle\Helper\AlertifyHelper</parameter>
         <parameter key="alertify.event_listener">Troopers\AlertifyBundle\EventListener\AlertifyListener</parameter>
@@ -17,5 +18,15 @@
             <argument type="service" id="twig" />
             <argument>%troopers_alertify%</argument>
         </service>
+        <service id="troopers_alertifybundle.event_listener" class="%alertify.event_listener%">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="session" />
+            <argument type="service" id="troopers_alertifybundle.session_handler" />
+        </service>
+        <service id="troopers_alertifybundle.twig.extension" class="%alertify.twig.extension.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="troopers_alertifybundle.session_handler" />
+        </service>
+
     </services>
 </container>
