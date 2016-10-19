@@ -18,13 +18,24 @@ class AlertifyHelper
         $this->session = $session;
     }
 
-    /*
+    /**
      * Alert message to flash bag.
-     * @param string $content Captain Obvious ? We have to setup a content
-     * @param string $type    Success or Error ? Warning or Info ? You choose !
+     * @param string $content
+     * @param string $type
+     * @param array  $options
      */
-    public function alert($content, $type = 'success')
+    public function alert($content, $type = 'success', $options = [])
     {
+        if (!is_array($content)) {
+            $content = [
+                'body' => $content,
+            ];
+        }
+
+        $content = array_merge($content, [
+            'options' => $options
+        ]);
+
         $this->session->getFlashBag()->add($type, $content);
     }
 
@@ -32,39 +43,43 @@ class AlertifyHelper
      * Congrats user through flash bag : all happened successfully.
      *
      * @param string|array $content
+     * @param array        $options
      */
-    public function congrat($content)
+    public function congrat($content, $options = [])
     {
-        $this->session->getFlashBag()->add('success', $content);
+        $this->alert('success', $content, $options);
     }
 
     /**
      * Warn user through flash bag: something requires attention.
      *
      * @param string|array $content
+     * @param array        $options
      */
-    public function warn($content)
+    public function warn($content, $options = [])
     {
-        $this->session->getFlashBag()->add('warning', $content);
+        $this->alert('warning', $content, $options);
     }
 
     /**
      * Inform user through flash bag: something have to be said.
      *
      * @param string|array $content
+     * @param array        $options
      */
-    public function inform($content)
+    public function inform($content, $options = [])
     {
-        $this->session->getFlashBag()->add('info', $content);
+        $this->alert('info', $content, $options);
     }
 
     /**
      * Scold user through flas hbag: something went wrong.
      *
      * @param string|array $content
+     * @param array        $options
      */
-    public function scold($content)
+    public function scold($content, $options = [])
     {
-        $this->session->getFlashBag()->add('error', $content);
+        $this->alert('error', $content, $options);
     }
 }

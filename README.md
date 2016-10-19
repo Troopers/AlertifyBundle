@@ -20,6 +20,7 @@ Declare in the config (or just use the default configuration) and dispatch alert
 * [Noty](http://needim.github.com/noty/)
 * [Codrops notifications](http://tympanus.net/Development/NotificationStyles)
 * [Notie.js](https://github.com/jaredreich/notie.js)
+* [Push.js](https://github.com/Nickersoft/push.js)
 
 Installation
 ------------
@@ -52,7 +53,7 @@ For example, this code ...
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 ```
-and the same way for stylesheets (if needded) and for each one of availables librairies (`alertify-notie`, `alertify-codrops-notification`...).
+and the same way for stylesheets (if needded) and for each one of availables librairies (`alertify-notie`, `alertify-codrops-notification`, `alertify-pushjs`...).
 
 ### manually
 
@@ -65,7 +66,7 @@ If you want to do this  manually, you'll have to read the Resources/config/asset
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 ```
-and the same way for stylesheets.
+and the same way for stylesheets and other libraries.
 
 Configuration ?
 ------------
@@ -115,15 +116,14 @@ Add this block at the end of your twig layout:
 Now, anywhere, you can put your alert in the flash session and enjoy.
 
     $this->get('session')->getFlashBag()->add('success', 'ok');
-    $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok');
-    $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok', 'context' => 'front');
+    $this->get('session')->getFlashBag()->add('warning', array('body' => 'ok', 'context' => 'front', 'options' => ['option1' => 'custom value']);
 
 You can use the `troopers_alertifybundle.helper.alertifyhelper` service to ease the alert creation :
 
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->congrat('TEST');
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->warn('TEST');
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->inform('TEST');
-    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->scold('TEST');
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->congrat('TEST', $options);
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->warn('TEST', $options);
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->inform('TEST', $options);
+    $this->container->get('troopers_alertifybundle.helper.alertifyhelper')->scold('TEST', $options);
 
 You can also use the AlertifyControllerTrait to have simple methods in controller :
 
