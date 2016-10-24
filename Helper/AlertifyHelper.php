@@ -48,7 +48,7 @@ class AlertifyHelper
      */
     public function congrat($content, $options = [])
     {
-        $this->alert('success', $content, $options);
+        $this->alert($content, 'success', $options);
     }
 
     /**
@@ -59,7 +59,7 @@ class AlertifyHelper
      */
     public function warn($content, $options = [])
     {
-        $this->alert('warning', $content, $options);
+        $this->alert($content, 'warning', $options);
     }
 
     /**
@@ -70,7 +70,7 @@ class AlertifyHelper
      */
     public function inform($content, $options = [])
     {
-        $this->alert('info', $content, $options);
+        $this->alert($content, 'info', $options);
     }
 
     /**
@@ -81,6 +81,6 @@ class AlertifyHelper
      */
     public function scold($content, $options = [])
     {
-        $this->alert('error', $content, $options);
+        $this->alert($content, 'error', $options);
     }
 }
