@@ -12,6 +12,7 @@
 namespace Troopers\AlertifyBundle\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -57,6 +58,10 @@ class AlertifyListener implements EventSubscriberInterface
      */
     protected function injectAlertify(Response $response, Request $request)
     {
+        if ($response instanceof RedirectResponse) {
+            return;
+        }
+
         $content = $response->getContent();
         $pos = strripos($content, '</body>');
 
