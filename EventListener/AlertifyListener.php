@@ -63,11 +63,14 @@ class AlertifyListener implements EventSubscriberInterface
         }
 
         $content = $response->getContent();
-        $pos = strripos($content, '</body>');
+        $endBodyPos = strripos($content, '</body>');
+        $hasBody = false !== $endBodyPos;
+        $hasMetaRefresh = false !== strripos($content, 'http-equiv="refresh"');
+        $isRedirectResponse = $response instanceof RedirectResponse;
 
-        if (false !== $pos) {
+        if ($hasBody && !$hasMetaRefresh && !$isRedirectResponse) {
             $alertify = $this->alertifySessionHandler->handle($this->session);
-            $content = substr($content, 0, $pos).$alertify.substr($content, $pos);
+            $content = substr($content, 0, $endBodyPos).$alertify.substr($content, $endBodyPos);
             $response->setContent($content);
         }
     }
