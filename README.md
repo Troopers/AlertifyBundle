@@ -1,7 +1,6 @@
 [![Troopers](https://cloud.githubusercontent.com/assets/618536/18787530/83cf424e-81a3-11e6-8f66-cde3ec5fa82a.png)](http://troopers.agency)
 
 [![Build Status](https://travis-ci.org/Troopers/AlertifyBundle.svg)](https://travis-ci.org/Troopers/AlertifyBundle)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Troopers/TroopersAlertifyBundle)
 [![License](https://img.shields.io/packagist/l/troopers/alertify-bundle.svg)](https://packagist.org/packages/troopers/alertify-bundle)
 [![Version](https://img.shields.io/packagist/v/troopers/alertify-bundle.svg)](https://packagist.org/packages/troopers/alertify-bundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e/mini.png)](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e)
@@ -13,7 +12,7 @@ Alertify Bundle
 What is the point ?
 -------
 
-This bundle allows you to easily harmonize alerts and others notifications.
+This bundle allows you to easily harmonize notifications in a symfony app.
 Declare in the config (or just use the default configuration) and dispatch alerts with the following libraries ([or your own](#use-my-own-alert-system)):
 
 * [Toastr](https://github.com/CodeSeven/toastr)
@@ -28,8 +27,7 @@ Installation
 
 First, require it thanks to composer:
 
-    composer.phar require troopers/alertify-bundle:dev-master
-
+    composer.phar require troopers/alertify-bundle:~3.0
 
 Add it in your AppKernel.php:
 
