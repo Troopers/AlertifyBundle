@@ -2,7 +2,7 @@
     "name": "troopers/alertify-bundle",
     "type": "symfony-bundle",
     "description": "Symfony AlertifyBundle",
-    "keywords": ["alert", "bootstrap"],
+    "keywords": ["alert"],
     "homepage": "https://github.com/Troopers/TroopersAlertifyBundle",
     "license": "MIT",
     "authors": [
@@ -29,12 +29,5 @@
     "autoload": {
         "psr-0": { "Troopers\\AlertifyBundle": "" }
     },
-    "target-dir": "Troopers/AlertifyBundle",
-
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
-    }
+    "target-dir": "Troopers/AlertifyBundle"
 }

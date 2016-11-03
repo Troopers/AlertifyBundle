@@ -1,0 +1,23 @@
+language: php
+
+sudo: false
+
+cache:
+    directory:
+        - $HOME/.composer/cache/files
+
+php:
+    - 5.4
+    - 5.5
+    - 5.6
+    - 7.0
+    - hhvm
+
+matrix:
+    include:
+        - php: 5.6
+          env: DEPENDENCIES='dev'
+
+install: composer update $COMPOSER_FLAGS
+
+script: phpunit -v
