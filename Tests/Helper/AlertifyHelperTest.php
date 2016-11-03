@@ -2,8 +2,8 @@
 
 namespace Troopers\AlertifyBundle\Tests\Helper;
 
-use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Troopers\AlertifyBundle\Helper\AlertifyHelper;
 
 class AlertifyHelperTest extends \PHPUnit_Framework_TestCase
@@ -55,7 +55,8 @@ class AlertifyHelperTest extends \PHPUnit_Framework_TestCase
     /**
      * @return Session
      */
-    protected function getSessionMock() {
+    protected function getSessionMock()
+    {
         return new Session(new MockArraySessionStorage());
     }
 }
