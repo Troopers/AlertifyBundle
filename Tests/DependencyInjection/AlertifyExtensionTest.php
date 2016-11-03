@@ -2,8 +2,8 @@
 
 namespace Troopers\AlertifyBundle\Tests\DependencyInjection;
 
-use Troopers\AlertifyBundle\DependencyInjection\TroopersAlertifyExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Troopers\AlertifyBundle\DependencyInjection\TroopersAlertifyExtension;
 
 class AlertifyExtensionTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,12 +19,12 @@ class AlertifyExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Troopers\\AlertifyBundle\\EventListener\\AlertifyListener', $container->getParameter('alertify.event_listener'));
         $this->assertEquals([
             'default' => [
-                'context' => 'front',
-                'engine' => 'toastr',
-                'layout' => null,
-                'translationDomain' => 'alertify'
+                'context'           => 'front',
+                'engine'            => 'toastr',
+                'layout'            => null,
+                'translationDomain' => 'alertify',
             ],
-            'contexts' => []
+            'contexts' => [],
         ], $container->getParameter('troopers_alertify'));
         $this->assertEquals([], $container->getParameter('troopers_alertify.contexts'));
         $this->assertEquals('front', $container->getParameter('troopers_alertify.default.context'));
@@ -40,64 +40,63 @@ class AlertifyExtensionTest extends \PHPUnit_Framework_TestCase
         $loader->load([[
                 'contexts' => [
                     'front' => [
-                        'engine' => 'notie',
+                        'engine'  => 'notie',
                         'options' => [
-                            'animationDelay' => 300
-                        ]
+                            'animationDelay' => 300,
+                        ],
                     ],
                     'back' => [
-                        'engine' => 'pushjs',
-                        'translationDomain' => 'admin'
-                    ]
+                        'engine'            => 'pushjs',
+                        'translationDomain' => 'admin',
+                    ],
                 ],
                 'default' => [
-                    'engine' => 'notie'
-                ]]], $container);
+                    'engine' => 'notie',
+                ], ]], $container);
         $this->assertSame([
             'contexts' => [
                 'front' => [
-                    'engine' => 'notie',
+                    'engine'  => 'notie',
                     'options' => [
-                        'animationDelay' => 300
+                        'animationDelay' => 300,
                     ],
-                    'layout' => null,
+                    'layout'            => null,
                     'translationDomain' => 'alertify',
-                    'timeout' => null,
+                    'timeout'           => null,
                 ],
                 'back' => [
-                    'engine' => 'pushjs',
+                    'engine'            => 'pushjs',
                     'translationDomain' => 'admin',
-                    'layout' => null,
-                    'timeout' => null,
-                    'options' => []
-                ]
+                    'layout'            => null,
+                    'timeout'           => null,
+                    'options'           => [],
+                ],
             ],
             'default' => [
-                'engine' => 'notie',
-                'context' => 'front',
-                'layout' => null,
-                'translationDomain' => 'alertify'
-            ]
-                ,
+                'engine'            => 'notie',
+                'context'           => 'front',
+                'layout'            => null,
+                'translationDomain' => 'alertify',
+            ],
         ], $container->getParameter('troopers_alertify'));
 
         $this->assertEquals([
             'front' => [
-                'engine' => 'notie',
-                'layout' => null,
+                'engine'            => 'notie',
+                'layout'            => null,
                 'translationDomain' => 'alertify',
-                'timeout' => null,
-                'options' => [
-                    'animationDelay' => 300
-                ]
+                'timeout'           => null,
+                'options'           => [
+                    'animationDelay' => 300,
+                ],
             ],
             'back' => [
-                'engine' => 'pushjs',
+                'engine'            => 'pushjs',
                 'translationDomain' => 'admin',
-                'layout' => null,
-                'timeout' => null,
-                'options' => []
-            ]
+                'layout'            => null,
+                'timeout'           => null,
+                'options'           => [],
+            ],
         ], $container->getParameter('troopers_alertify.contexts'));
         $this->assertEquals('front', $container->getParameter('troopers_alertify.default.context'));
         $this->assertEquals('notie', $container->getParameter('troopers_alertify.default.engine'));
