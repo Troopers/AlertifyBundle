@@ -3,8 +3,8 @@
 namespace Troopers\AlertifyBundle\Tests\Helper;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Troopers\AlertifyBundle\DependencyInjection\TroopersAlertifyExtension;
 use Troopers\AlertifyBundle\Handler\AlertifySessionHandler;
 use Troopers\AlertifyBundle\Helper\AlertifyHelper;
@@ -36,7 +36,7 @@ class AlertifySessionHandlerTest extends \PHPUnit_Framework_TestCase
         $helper->congrat('Alert1');
         $this->assertEquals(1, count(explode(' ', $handler->handle($this->session))));
         $helper->congrat('Alert2');
-        $helper->congrat('Alert3', ['opt1'=> 42]);
+        $helper->congrat('Alert3', ['opt1' => 42]);
         $helper->congrat('Alert4');
         $this->assertEquals(3, count(explode(' ', $handler->handle($this->session))));
     }
@@ -44,7 +44,8 @@ class AlertifySessionHandlerTest extends \PHPUnit_Framework_TestCase
     /**
      * @return Session
      */
-    protected function mockSession() {
+    protected function mockSession()
+    {
         $this->session = new Session(new MockArraySessionStorage());
     }
 
@@ -56,5 +57,4 @@ class AlertifySessionHandlerTest extends \PHPUnit_Framework_TestCase
 
         return $twigEnvironment;
     }
-
 }
