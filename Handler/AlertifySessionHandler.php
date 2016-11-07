@@ -45,20 +45,20 @@ class AlertifySessionHandler
 
         $renders = [];
         foreach ($flashes as $type => $flash) {
-                foreach ($flash as $key => $content) {
-                    if (is_array($content)) {
-                        $context = isset($content['context']) ? $content['context'] : null;
-                        $defaultParameters = self::getDefaultParametersFromContext($context);
-                        $parameters = array_replace_recursive($defaultParameters, $content);
-                    } else {
-                        $defaultParameters = self::getDefaultParametersFromContext(null);
-                        $parameters = array_replace($defaultParameters, ['body' => $content]);
-                    }
-
-                    $parameters['type'] = $type;
-                    $renders[$type.$key] = $this->twig->render('TroopersAlertifyBundle::'.$parameters['engine'].'.html.twig', $parameters);
+            foreach ($flash as $key => $content) {
+                if (is_array($content)) {
+                    $context = isset($content['context']) ? $content['context'] : null;
+                    $defaultParameters = self::getDefaultParametersFromContext($context);
+                    $parameters = array_replace_recursive($defaultParameters, $content);
+                } else {
+                    $defaultParameters = self::getDefaultParametersFromContext(null);
+                    $parameters = array_replace($defaultParameters, ['body' => $content]);
                 }
+
+                $parameters['type'] = $type;
+                $renders[$type.$key] = $this->twig->render('TroopersAlertifyBundle::'.$parameters['engine'].'.html.twig', $parameters);
             }
+        }
 
         return implode(' ', $renders);
     }
