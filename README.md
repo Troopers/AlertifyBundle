@@ -196,25 +196,6 @@ as you see, you can pass some arguments tu customize the modal, availables ones 
       string : (default: "alertify-modal")
 
 
-Callback type
-------------
-
-There is a final type of Alert you can call, the callback
-Callbach allow you to call any action in you project, thats awesome if you want put dynamic content in your alery.
-To work, the called action have to render a view. It's very usefull to include a form in a modal for exemple.
-
-    $this->get('session')
-      ->getFlashBag()
-      ->set('callback', array(
-          'engine' => 'modal',
-          'title' => 'Wow',
-          'action' => 'AcmeBundle:Default:hello',
-          'button_class' => 'btn btn-primary btn-large',
-          'body' => '<p>Yeah that's crazy !</p>'
-        )
-    );
-
-This type is very simple to use, just call the callback alery, and in the options define "type" with the final alert you want, the action with the action you want call, and other options specific to the alery you choose.
 
 Ajax mode
 -----------
