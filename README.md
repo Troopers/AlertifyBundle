@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/packagist/v/troopers/alertify-bundle.svg)](https://packagist.org/packages/troopers/alertify-bundle)
 [![Packagist DL](https://img.shields.io/packagist/dt/troopers/alertify-bundle.svg)](https://packagist.org/packages/troopers/alertify-bundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e/mini.png)](https://insight.sensiolabs.com/projects/4d741335-ad77-4308-9113-b1648c4be64e)
-[![Twitter Follow](https://img.shields.io/twitter/follow/troopersagency.svg?style=social&label=Follow%20Troopers)]()
+[![Twitter Follow](https://img.shields.io/twitter/follow/troopersagency.svg?style=social&label=Follow%20Troopers)](https://twitter.com/troopersagency)
 
 =============
 
