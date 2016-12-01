@@ -4,7 +4,7 @@
 {% endif %}
 
 <script type="text/javascript">
-    (function() {
+    $(document).ready(function() {
       var delay;
 
       delay = function(ms, func) {
@@ -32,5 +32,5 @@
         return toastr.{{ type }}(body,"{{ title|default(("alert."~type~".label")|trans({}, translationDomain|default('messages'))) }}");
     });
 
-}).call(this);
+});
 </script>
