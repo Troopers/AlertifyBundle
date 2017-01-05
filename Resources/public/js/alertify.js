@@ -24,7 +24,7 @@ $(document).ready(function() {
                 ajaxify(jsonResponse, "alertify-container", 'html');
             },
             error: function(jsonResponse) {
-                alert("Il semble s'êre produit une erreur");
+                alert("Il semble s'être produit une erreur");
             }
         });
     }
@@ -49,7 +49,7 @@ $(document).ready(function() {
                 timeout: $(element).attr('data-timeout') ? $(element).attr('data-timeout'):""
             }
         }else{
-                alert("Il semble s'êre produit une erreur");
+                alert("Il semble s'être produit une erreur");
                 $('#canvasloader-container').fadeOut();
         }
         return params;
