@@ -2,35 +2,35 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="es" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="1">
+            <trans-unit id="58893bde77e12">
                 <source>modal.confirm.button.valid</source>
                 <target>Validar</target>
             </trans-unit>
-            <trans-unit id="2">
+            <trans-unit id="58893bde77e21">
                 <source>modal.confirm.button.cancel</source>
                 <target>Cancelar</target>
             </trans-unit>
-            <trans-unit id="3">
+            <trans-unit id="58893bde77e2b">
                 <source>alert.success.label</source>
                 <target>Éxito</target>
             </trans-unit>
-            <trans-unit id="4">
+            <trans-unit id="58893bde77e34">
                 <source>alert.info.label</source>
                 <target>Información</target>
             </trans-unit>
-            <trans-unit id="5">
+            <trans-unit id="58893bde77e3d">
                 <source>alert.warning.label</source>
                 <target>Advertencia</target>
             </trans-unit>
-            <trans-unit id="6">
+            <trans-unit id="58893bde77e45">
                 <source>alert.error.label</source>
                 <target>Error</target>
             </trans-unit>
-            <trans-unit id="7">
+            <trans-unit id="58893bde77e4e">
                 <source>alert.back.label</source>
                 <target>Volver</target>
             </trans-unit>
-            <trans-unit id="8">
+            <trans-unit id="58893bde77e57">
                 <source>alert.close.label</source>
                 <target>Cerrar</target>
             </trans-unit>

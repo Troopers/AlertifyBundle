@@ -2,35 +2,35 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="nl" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="1">
+            <trans-unit id="58893bde78dc2">
                 <source>modal.confirm.button.valid</source>
                 <target>Valideren</target>
             </trans-unit>
-            <trans-unit id="2">
+            <trans-unit id="58893bde78ddf">
                 <source>modal.confirm.button.cancel</source>
                 <target>Sluiten</target>
             </trans-unit>
-            <trans-unit id="3">
+            <trans-unit id="58893bde78df3">
                 <source>alert.success.label</source>
                 <target>Succes</target>
             </trans-unit>
-            <trans-unit id="4">
+            <trans-unit id="58893bde78e06">
                 <source>alert.info.label</source>
                 <target>Informatie</target>
             </trans-unit>
-            <trans-unit id="5">
+            <trans-unit id="58893bde78e19">
                 <source>alert.warning.label</source>
                 <target>Waarschuwing</target>
             </trans-unit>
-            <trans-unit id="6">
+            <trans-unit id="58893bde78e2c">
                 <source>alert.error.label</source>
                 <target>Fout</target>
             </trans-unit>
-            <trans-unit id="7">
+            <trans-unit id="58893bde78e3f">
                 <source>alert.back.label</source>
                 <target>Terugkeer</target>
             </trans-unit>
-            <trans-unit id="8">
+            <trans-unit id="58893bde78e53">
                 <source>alert.close.label</source>
                 <target>Sluiten</target>
             </trans-unit>
