@@ -14,7 +14,7 @@
             {% endspaceless %}
         {% endfor %}
         });
-
-        notie.alert({{ attribute(map, type) }}, "{{ body|trans({}, translationDomain|default('messages'))|e('js')|raw }}"{% if timeout|default(false) %}, {{ timeout }}{% endif %});
+        
+        notie.alert({ type: {{ attribute(map, type) }}, text: "{{ body|trans({}, translationDomain|default('messages'))|e('js')|raw }}"{% if timeout|default(false) %}, time: {{ timeout }}{% endif %}});
     });
 </script>
