@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Troopers\AlertifyBundle\Helper\AlertifyHelper;
 
-class AlertifyHelperTest extends \PHPUnit_Framework_TestCase
+class AlertifyHelperTest extends \PHPUnit\Framework\TestCase
 {
     public function testFlashBagPopulate()
     {

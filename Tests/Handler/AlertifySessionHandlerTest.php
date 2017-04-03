@@ -9,7 +9,7 @@ use Troopers\AlertifyBundle\DependencyInjection\TroopersAlertifyExtension;
 use Troopers\AlertifyBundle\Handler\AlertifySessionHandler;
 use Troopers\AlertifyBundle\Helper\AlertifyHelper;
 
-class AlertifySessionHandlerTest extends \PHPUnit_Framework_TestCase
+class AlertifySessionHandlerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Twig_Environment
