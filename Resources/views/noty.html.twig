@@ -3,11 +3,10 @@
     {% set theme = "twitter" %}
 {% endif %}
 
-<link href="{{asset('bundles/avalertify/noty/css/noty_theme_'~theme~'.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('bundles/troopersalertify/noty/css/noty_theme_'~theme~'.css')}}" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 $(document).ready(function(){
     noty({text: "{{ body|raw|trans({}, translationDomain|default('messages')) }}", type:"{{type}}", layout:"{{ layout|default('TopRight') }}", theme: "noty_theme_{{theme}}"{% if timeout is defined %}, timeout : {{timeout}}{% endif %} });
 });
 </script>
-

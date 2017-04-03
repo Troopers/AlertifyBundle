@@ -5,7 +5,7 @@ namespace Troopers\AlertifyBundle\Tests\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Troopers\AlertifyBundle\DependencyInjection\TroopersAlertifyExtension;
 
-class AlertifyExtensionTest extends \PHPUnit_Framework_TestCase
+class AlertifyExtensionTest extends \PHPUnit\Framework\TestCase
 {
     public function testDefault()
     {

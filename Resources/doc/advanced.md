@@ -24,7 +24,7 @@ as you see, you can pass some arguments tu customize the modal, availables ones 
 After a link's clic or form's submission, we sometimes want to prompt the user to be sure he understood what he did.
 The confirm modal will help you to accomplish this rough job :)
 
-Please note that [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#installation) 
+Please note that [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#installation)
 is required so you need to [setup it properly before](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/blob/master/Resources/doc/index.md#installation) following next steps.
 
 Add this to your routing.yml file:
@@ -38,7 +38,7 @@ Add this to your routing.yml file:
 
 Add this to your template:
 
-    <script src="{{ asset('bundles/avalertify/js/confirm.js') }}"></script>
+    <script src="{{ asset('bundles/troopersalertify/js/confirm.js') }}"></script>
 
 Then, add the following attributes to the link or form tag you want to protect:
 
@@ -50,7 +50,7 @@ Then, add the following attributes to the link or form tag you want to protect:
 - data-confirm-button-class="btn-primary"
 
 You can also add a callback like this:
- 
+
 - data-confirm-callback="someJavascriptFunctionToRunIfTheConfirmButtonIsClicked();"
 
 In this cas, after confirm, the link won't be directly followed (or the form won't be submit).
