@@ -24,6 +24,9 @@
         "symfony/class-loader": "~2.1",
         "phpunit/phpunit": "~5.7"
     },
+    "suggest": {
+        "troopers/assetic-injector-bundle": "For Inject libraries in your views easily"
+    },
     "autoload": {
         "psr-0": { "Troopers\\AlertifyBundle": "" }
     },
