@@ -15,11 +15,11 @@
             <argument type="service" id="session" />
         </service>
         <service id="troopers_alertifybundle.session_handler" class="%alertify.handler.session.class%">
-            <argument type="service" id="twig" />
             <argument>%troopers_alertify%</argument>
         </service>
         <service id="troopers_alertifybundle.event_listener" class="%alertify.event_listener%">
             <tag name="kernel.event_subscriber" />
+            <argument type="service" id="twig" />
             <argument type="service" id="session" />
             <argument type="service" id="troopers_alertifybundle.session_handler" />
         </service>

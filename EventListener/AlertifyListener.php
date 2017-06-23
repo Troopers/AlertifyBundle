@@ -32,6 +32,7 @@ class AlertifyListener implements EventSubscriberInterface
      * @var Session
      */
     private $session;
+    private $twig;
 
     /**
      * AlertifyListener constructor.
@@ -39,10 +40,11 @@ class AlertifyListener implements EventSubscriberInterface
      * @param Session                $session
      * @param AlertifySessionHandler $alertifySessionHandler
      */
-    public function __construct(Session $session, AlertifySessionHandler $alertifySessionHandler)
+    public function __construct(\Twig_Environment $twig, Session $session, AlertifySessionHandler $alertifySessionHandler)
     {
-        $this->alertifySessionHandler = $alertifySessionHandler;
+        $this->twig = $twig;
         $this->session = $session;
+        $this->alertifySessionHandler = $alertifySessionHandler;
     }
 
     public function onKernelResponse(FilterResponseEvent $event)
@@ -69,7 +71,7 @@ class AlertifyListener implements EventSubscriberInterface
         $isRedirectResponse = $response instanceof RedirectResponse;
 
         if ($hasBody && !$hasMetaRefresh && !$isRedirectResponse) {
-            $alertify = $this->alertifySessionHandler->handle($this->session);
+            $alertify = $this->alertifySessionHandler->handle($this->session, $this->twig);
             $content = substr($content, 0, $endBodyPos).$alertify.substr($content, $endBodyPos);
             $response->setContent($content);
         }
