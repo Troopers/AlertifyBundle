@@ -61,6 +61,6 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
      */
     public function alertifyFilter($environment, Session $session)
     {
-        return $this->alertifySessionHandler->handle($session);
+        return $this->alertifySessionHandler->handle($session, $environment);
     }
 }

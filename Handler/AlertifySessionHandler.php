@@ -25,9 +25,8 @@ class AlertifySessionHandler
      * @param \Twig_Environment $twig
      * @param array             $defaultParameters
      */
-    public function __construct(\Twig_Environment $twig, array $defaultParameters)
+    public function __construct(array $defaultParameters)
     {
-        $this->twig = $twig;
         $this->defaultParameters = $defaultParameters;
     }
 
@@ -39,7 +38,7 @@ class AlertifySessionHandler
      *
      * @return string
      */
-    public function handle($session)
+    public function handle($session, \Twig_Environment $twig)
     {
         $flashes = $session->getFlashBag()->all();
 
@@ -56,7 +55,7 @@ class AlertifySessionHandler
                 }
 
                 $parameters['type'] = $type;
-                $renders[$type.$key] = $this->twig->render('TroopersAlertifyBundle::'.$parameters['engine'].'.html.twig', $parameters);
+                $renders[$type.$key] = $twig->render('TroopersAlertifyBundle::'.$parameters['engine'].'.html.twig', $parameters);
             }
         }
 

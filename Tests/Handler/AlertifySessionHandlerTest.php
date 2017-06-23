@@ -29,16 +29,16 @@ class AlertifySessionHandlerTest extends \PHPUnit\Framework\TestCase
         /** @var AlertifyHelper $helper */
         $helper = new AlertifyHelper($this->session);
         $handler = new AlertifySessionHandler(
-            $this->getTwigEnvironmentMock(),
             $container->getParameter('troopers_alertify')
         );
+        $twig = $this->getTwigEnvironmentMock();
 
         $helper->congrat('Alert1');
-        $this->assertEquals(1, count(explode(' ', $handler->handle($this->session))));
+        $this->assertEquals(1, count(explode(' ', $handler->handle($this->session, $twig))));
         $helper->congrat('Alert2');
         $helper->congrat('Alert3', ['opt1' => 42]);
         $helper->congrat('Alert4');
-        $this->assertEquals(3, count(explode(' ', $handler->handle($this->session))));
+        $this->assertEquals(3, count(explode(' ', $handler->handle($this->session, $twig))));
     }
 
     /**
@@ -52,6 +52,7 @@ class AlertifySessionHandlerTest extends \PHPUnit\Framework\TestCase
     protected function getTwigEnvironmentMock()
     {
         $twigEnvironment = $this->getMockBuilder('Twig_Environment')
+            ->disableOriginalConstructor()
             ->setMethods(['render'])
             ->getMock();
 
