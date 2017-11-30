@@ -57,22 +57,31 @@ class AlertifyListener implements EventSubscriberInterface
 
     /**
      * Injects the alertify view into the given Response just before </body> tag.
+     *
+     * @param Response $response
+     * @param Request  $request
+     *
+     * @throws IncompatibleStatusCodeException
      */
     protected function injectAlertify(Response $response, Request $request)
     {
-        if ($response instanceof RedirectResponse) {
-            return;
-        }
-
         $content = $response->getContent();
         $endBodyPos = strripos($content, '</body>');
         $hasBody = false !== $endBodyPos;
         $hasMetaRefresh = false !== strripos($content, 'http-equiv="refresh"');
+        $forceInject = $response->headers->get('X-Inject-Alertify', false);
         $isRedirectResponse = $response instanceof RedirectResponse;
 
-        if ($hasBody && !$hasMetaRefresh && !$isRedirectResponse) {
+        if ($hasBody && !$hasMetaRefresh && !$isRedirectResponse || $forceInject) {
+            if ($response->getStatusCode() === 204) {
+                throw new IncompatibleStatusCodeException();
+            }
             $alertify = $this->alertifySessionHandler->handle($this->session, $this->twig);
-            $content = substr($content, 0, $endBodyPos).$alertify.substr($content, $endBodyPos);
+            if ($endBodyPos) {
+                $content = substr($content, 0, $endBodyPos).$alertify.substr($content, $endBodyPos);
+            } else {
+                $content .= $alertify;
+            }
             $response->setContent($content);
         }
     }

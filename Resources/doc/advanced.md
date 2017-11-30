@@ -71,3 +71,15 @@ Instead of that, the js we'll be ran.
 ```html
     <a href="/your_url" class="btn btn-mini btn-danger" data-toggle="confirm" data-title="Are you sure ?" data-body="Kittens will suffer ! Do you confirm ?" data-cancel-button-class="cancel" data-confirm-button-class="danger">Burn some cats</a>
 ```
+
+## Custom header
+
+If you want to force the trigger of an alert, after an ajax call for example, you need to send through the response a custom header : `X-Inject-Alertify`.  When its value is set to `true`, then the alert append at the end of the response content, even if it is empty. Note that the `204` status code (No content) is incompatible with this header, as the 204 response MUST NOT include a message-body.
+
+## Example :
+
+```php
+return new Response(null, 200, [
+	'X-Inject-Alertify' => true
+]);
+```
