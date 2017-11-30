@@ -31,5 +31,5 @@ With Alertify, give the final user a unique and harmnized view f your notificati
 - [Installation](https://github.com/Troopers/TroopersAlertifyBundle/blob/master/Resources/doc/installation.md)
 - [Configuration](https://github.com/Troopers/TroopersAlertifyBundle/blob/master/Resources/doc/configuration.md)
 - [Getting started](https://github.com/Troopers/TroopersAlertifyBundle/blob/master/Resources/doc/getting_started.md)
-- [Advanced (modal, confirmation modal)](https://github.com/Troopers/TroopersAlertifyBundle/blob/master/Resources/doc/advanced.md)
+- [Advanced (modal, confirmation modal, custom header)](https://github.com/Troopers/TroopersAlertifyBundle/blob/master/Resources/doc/advanced.md)
 - [Pro tips](https://github.com/Troopers/TroopersAlertifyBundle/blob/master/Resources/doc/pro_tips.md)
