@@ -55,7 +55,7 @@ class AlertifySessionHandler
                 }
 
                 $parameters['type'] = $type;
-                $renders[$type.$key] = $twig->render('TroopersAlertifyBundle::'.$parameters['engine'].'.html.twig', $parameters);
+                $renders[$type.$key] = $twig->render('@TroopersAlertify/'.$parameters['engine'].'.html.twig', $parameters);
             }
         }
 
