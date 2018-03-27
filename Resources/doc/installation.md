@@ -7,10 +7,9 @@ First, require it thanks to composer:
 
 Add it in your AppKernel.php:
 
-```
+```php
     public function registerBundles() {
-        $bundles = array(
-            [...]
+        $bundles = [
+            //...
             new Troopers\AlertifyBundle\TroopersAlertifyBundle(),
-            [...]
 ```
