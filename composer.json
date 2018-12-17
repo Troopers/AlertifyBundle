@@ -19,6 +19,7 @@
     ],
     "require": {
         "friendsofsymfony/jsrouting-bundle": "^1.0 || ^2.0",
+        "symfony/twig-bundle": "^2.0 || ^3.0 || ^4.0",
         "symfony/templating": "^2.0 || ^3.0 || ^4.0"
     },
     "require-dev": {
