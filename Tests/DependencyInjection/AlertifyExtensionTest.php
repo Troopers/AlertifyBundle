@@ -38,21 +38,21 @@ class AlertifyExtensionTest extends \PHPUnit\Framework\TestCase
         $container = new ContainerBuilder();
         $loader = new TroopersAlertifyExtension();
         $loader->load([[
-                'contexts' => [
-                    'front' => [
-                        'engine'  => 'notie',
-                        'options' => [
-                            'animationDelay' => 300,
-                        ],
-                    ],
-                    'back' => [
-                        'engine'            => 'pushjs',
-                        'translationDomain' => 'admin',
+            'contexts' => [
+                'front' => [
+                    'engine'  => 'notie',
+                    'options' => [
+                        'animationDelay' => 300,
                     ],
                 ],
-                'default' => [
-                    'engine' => 'notie',
-                ], ]], $container);
+                'back' => [
+                    'engine'            => 'pushjs',
+                    'translationDomain' => 'admin',
+                ],
+            ],
+            'default' => [
+                'engine' => 'notie',
+            ], ]], $container);
         $this->assertSame([
             'contexts' => [
                 'front' => [

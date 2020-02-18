@@ -71,8 +71,9 @@ class AlertifyListener implements EventSubscriberInterface
         $hasMetaRefresh = false !== strripos($content, 'http-equiv="refresh"');
         $forceInject = $response->headers->get('X-Inject-Alertify', false);
         $isRedirectResponse = $response instanceof RedirectResponse;
+        $hasPreviousSession = $request->hasPreviousSession();
 
-        if ($hasBody && !$hasMetaRefresh && !$isRedirectResponse || $forceInject) {
+        if ($hasBody && $hasPreviousSession && !$hasMetaRefresh && !$isRedirectResponse || $forceInject) {
             if ($response->getStatusCode() === 204) {
                 throw new IncompatibleStatusCodeException();
             }
