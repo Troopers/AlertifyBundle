@@ -3,6 +3,7 @@
 <phpunit colors="true" bootstrap="vendor/autoload.php">
     <php>
         <ini name="error_reporting" value="-1" />
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled=1"/>
     </php>
 
     <testsuites>
