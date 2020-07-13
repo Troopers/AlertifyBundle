@@ -17,6 +17,7 @@ class AlertifyController extends AbstractController
      *
      * @param Request $request An HTTP request.
      * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
+     *
      * @return Response
      */
     public function confirmAction(Request $request)
@@ -45,6 +46,7 @@ class AlertifyController extends AbstractController
      *
      * @param Request $request An HTTP request.
      * @Route("/ajax", name="alertify_ajax", options={"expose"=true})
+     *
      * @return Response
      */
     public function ajaxAction(Request $request)
