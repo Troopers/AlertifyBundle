@@ -17,8 +17,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Troopers\AlertifyBundle\Exception\IncompatibleStatusCodeException;
 use Troopers\AlertifyBundle\Handler\AlertifySessionHandler;
+use Twig\Environment;
 
 /**
  * AlertifyListener append the alertify views to the response.
@@ -40,14 +43,17 @@ class AlertifyListener implements EventSubscriberInterface
      * @param Session                $session
      * @param AlertifySessionHandler $alertifySessionHandler
      */
-    public function __construct(\Twig_Environment $twig, Session $session, AlertifySessionHandler $alertifySessionHandler)
+    public function __construct(Environment $twig, Session $session, AlertifySessionHandler $alertifySessionHandler)
     {
         $this->twig = $twig;
         $this->session = $session;
         $this->alertifySessionHandler = $alertifySessionHandler;
     }
 
-    public function onKernelResponse(FilterResponseEvent $event)
+    /**
+     * @param ResponseEvent|FilterResponseEvent $event
+     */
+    public function onKernelResponse($event)
     {
         $response = $event->getResponse();
         $request = $event->getRequest();

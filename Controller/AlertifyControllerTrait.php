@@ -5,7 +5,7 @@ namespace Troopers\AlertifyBundle\Controller;
 use Symfony\Component\DependencyInjection\Container;
 
 /**
- * @property Container container
+ * @property Container $container
  */
 trait AlertifyControllerTrait
 {

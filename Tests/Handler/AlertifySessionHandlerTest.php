@@ -8,11 +8,12 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Troopers\AlertifyBundle\DependencyInjection\TroopersAlertifyExtension;
 use Troopers\AlertifyBundle\Handler\AlertifySessionHandler;
 use Troopers\AlertifyBundle\Helper\AlertifyHelper;
+use Twig\Environment;
 
 class AlertifySessionHandlerTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     protected $twigEnvironment;
     /**
@@ -51,7 +52,7 @@ class AlertifySessionHandlerTest extends \PHPUnit\Framework\TestCase
 
     protected function getTwigEnvironmentMock()
     {
-        $twigEnvironment = $this->getMockBuilder('Twig_Environment')
+        $twigEnvironment = $this->getMockBuilder(Environment::class)
             ->disableOriginalConstructor()
             ->setMethods(['render'])
             ->getMock();

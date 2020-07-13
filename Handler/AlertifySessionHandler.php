@@ -3,6 +3,7 @@
 namespace Troopers\AlertifyBundle\Handler;
 
 use Symfony\Component\HttpFoundation\Session\Session;
+use Twig\Environment;
 
 /**
  * AlertifySessionHandler.
@@ -10,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class AlertifySessionHandler
 {
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     protected $twig;
 
@@ -22,8 +23,8 @@ class AlertifySessionHandler
     /**
      * AlertifySessionHandler constructor.
      *
-     * @param \Twig_Environment $twig
-     * @param array             $defaultParameters
+     * @param Environment $twig
+     * @param array       $defaultParameters
      */
     public function __construct(array $defaultParameters)
     {
@@ -31,14 +32,14 @@ class AlertifySessionHandler
     }
 
     /**
-     * Alertify .
+     * Alertify.
      *
-     * @param \Twig_Environment $this-twig
-     * @param Session           $session
+     * @param Environment $twig
+     * @param Session     $session
      *
      * @return string
      */
-    public function handle($session, \Twig_Environment $twig)
+    public function handle($session, Environment $twig)
     {
         $flashes = $session->getFlashBag()->all();
 

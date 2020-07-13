@@ -3,23 +3,21 @@
 namespace Troopers\AlertifyBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Alertify controller.
  */
-class AlertifyController extends Controller
+class AlertifyController extends AbstractController
 {
     /**
      * Confirm modal.
      *
      * @param Request $request An HTTP request.
      * @Route("/confirm", name="alertify_confirm", options={"expose"=true})
-     * @Template("TroopersAlertifyBundle::confirm.html.twig")
-     *
-     * @return array
+     * @return Response
      */
     public function confirmAction(Request $request)
     {
@@ -28,7 +26,7 @@ class AlertifyController extends Controller
             $confirmCallback = null;
         }
 
-        return [
+        return $this->render('@TroopersAlertify/confirm.html.twig', [
             'title'                => $request->get('title'),
             'body'                 => $request->get('body'),
             'id'                   => $request->get('id').rand(1, 100).'-modal',
@@ -39,7 +37,7 @@ class AlertifyController extends Controller
             'modal_class'          => $request->get('modal_class'),
             'type'                 => $request->get('type'),
             'confirmCallback'      => $confirmCallback,
-        ];
+        ]);
     }
 
     /**
@@ -47,9 +45,8 @@ class AlertifyController extends Controller
      *
      * @param Request $request An HTTP request.
      * @Route("/ajax", name="alertify_ajax", options={"expose"=true})
-     * @Template("TroopersAlertifyBundle::ajax.html.twig")
      *
-     * @return array
+     * @return Response
      */
     public function ajaxAction(Request $request)
     {
@@ -66,6 +63,6 @@ class AlertifyController extends Controller
             $this->get('session')->getFlashBag()->add($request->get('main_type'), $options);
         }
 
-        return [];
+        return $this->render('@TroopersAlertify/ajax.html.twig');
     }
 }
