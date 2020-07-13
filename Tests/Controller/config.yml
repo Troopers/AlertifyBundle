@@ -1,0 +1,18 @@
+framework:
+    secret: 'azertyuiop'
+    test: true
+    session:
+        storage_id: session.storage.mock_file
+    router:
+        resource: '%kernel.project_dir%/Resources/config/routing.yml'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    Troopers\AlertifyBundle\Controller\AlertifyController:
+        public: true
+        tags: ['controller.service_arguments']
+
+sensio_framework_extra:
+    router:      { annotations: true } # Deprecated; use routing annotations of Symfony core instead

@@ -1,0 +1,2 @@
+troopers_alertify:
+    resource: "@TroopersAlertifyBundle/Resources/config/routing.yml"

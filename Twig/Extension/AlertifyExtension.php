@@ -4,11 +4,11 @@ namespace Troopers\AlertifyBundle\Twig\Extension;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 use Troopers\AlertifyBundle\Handler\AlertifySessionHandler;
+use Twig\Environment;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-/**
- * AlertifyExtension.
- */
-class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
+class AlertifyExtension extends AbstractExtension
 {
     /**
      * @var AlertifySessionHandler
@@ -28,14 +28,6 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     /**
      * {@inheritdoc}
      */
-    public function initRuntime(\Twig_Environment $environment)
-    {
-        $this->environment = $environment;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'alertify';
@@ -47,19 +39,19 @@ class AlertifyExtension extends \Twig_Extension implements \Twig_Extension_InitR
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('alertify', [$this, 'alertifyFilter'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new TwigFilter('alertify', [$this, 'alertifyFilter'], ['needs_environment' => true, 'is_safe' => ['html']]),
         ];
     }
 
     /**
      * Alertify filter.
      *
-     * @param \Twig_Environment $environment
-     * @param Session           $session
+     * @param Environment $environment
+     * @param Session     $session
      *
      * @return string
      */
-    public function alertifyFilter($environment, Session $session)
+    public function alertifyFilter(Environment $environment, Session $session)
     {
         return $this->alertifySessionHandler->handle($session, $environment);
     }
