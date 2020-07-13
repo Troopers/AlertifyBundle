@@ -30,7 +30,7 @@ class AlertifyExtensionTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('front', $container->getParameter('troopers_alertify.default.context'));
         $this->assertEquals('toastr', $container->getParameter('troopers_alertify.default.engine'));
         $this->assertEquals(null, $container->getParameter('troopers_alertify.default.layout'));
-        $this->assertEquals('alertify', $container->getParameter('troopers_alertify.default.translationdomain'));
+        $this->assertEquals('alertify', $container->getParameter('troopers_alertify.default.translationDomain'));
     }
 
     public function testContexts()
@@ -101,6 +101,6 @@ class AlertifyExtensionTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('front', $container->getParameter('troopers_alertify.default.context'));
         $this->assertEquals('notie', $container->getParameter('troopers_alertify.default.engine'));
         $this->assertEquals(null, $container->getParameter('troopers_alertify.default.layout'));
-        $this->assertEquals('alertify', $container->getParameter('troopers_alertify.default.translationdomain'));
+        $this->assertEquals('alertify', $container->getParameter('troopers_alertify.default.translationDomain'));
     }
 }
