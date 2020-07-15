@@ -3,7 +3,7 @@
     $(document).ready(function(){
         notie.setOptions({
         {% for key, value in options %}
-            {% spaceless %}
+            {% apply spaceless %}
                 {# if value is boolean, integer or float, do not wrap with quote #}
                 {% if value != true or value != false or value matches '/^\\d+$/' or value matches '/^[-+]?[0-9]*\\.?[0-9]+$/' %}
                     {% set wrapper = false %}
@@ -11,7 +11,7 @@
                 {% set wrapper = true %}
                 {{ key }}: {% if wrapper %}"{% endif %}{{ value }}{% if wrapper %}"{% endif %}
                 {% if not loop.last %},{% endif %}
-            {% endspaceless %}
+            {% endapply %}
         {% endfor %}
         });
         
