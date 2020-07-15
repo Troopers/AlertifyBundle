@@ -11,9 +11,10 @@
     </parameters>
 
     <services>
-        <service id="alertify" class="%alertify.helper.class%">
+        <service id="alertify" class="%alertify.helper.class%" public="true">
             <argument type="service" id="session" />
         </service>
+        <service id="%alertify.helper.class%" alias="alertify" />
         <service id="troopers_alertifybundle.session_handler" class="%alertify.handler.session.class%">
             <argument>%troopers_alertify%</argument>
         </service>
