@@ -32,10 +32,74 @@ troopers_alertify:
     ...
 ```
 
-Assetic injections
+Assets injections
 ------------------
 
+First, don't forget that the most of the available libraries here need jquery so you'll need to include it first.
 To add libraries in your views, two ways are possible :
+
+#### Classic way (recommended) (need `composer req symfony/asset`)
+
+This is how embed libraries in your views without AsseticInjectorBundle :
+
+- For **Toastr** :
+```twig
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/toastr/css/toastr.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/bundles/troopersalertify/toastr/js/toastr.js') }}"></script>
+{% endblock %}
+```
+
+- For **PushJs** :
+```twig
+{% block javascripts %}
+    <script src="{{ asset('/bundles/troopersalertify/push.js/push.min.js') }}"></script>
+{% endblock %}
+```
+
+- For **noty** :
+```twig
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/noty/css/jquery.noty.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/bundles/troopersalertify/noty/js/jquery.noty.js') }}"></script>
+{% endblock %}
+```
+
+- For **notie** :
+```twig
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/notie/notie.css') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/bundles/troopersalertify/notie/notie.js') }}"></script>
+{% endblock %}
+
+```
+
+- For **Codrops notification**
+```twig
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/codrops-notification/css/ns-default.css') }}" type="text/css" />
+    //and according to the choosed theme :
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/codrops-notification/css/ns-style-bar.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/codrops-notification/css/ns-style-attached.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/codrops-notification/css/ns-style-growl.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('/bundles/troopersalertify/codrops-notification/css/ns-style-other.cs') }}" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/bundles/troopersalertify/codrops-notification/js/classie.js') }}"></script>
+    <script src="{{ asset('/bundles/troopersalertify/codrops-notification/js/modernizr.custom.js') }}"></script>
+    <script src="{{ asset('/bundles/troopersalertify/codrops-notification/js/notificationFx.js') }}"></script>
+{% endblock %}
+```
 
 #### Use [AsseticInjectorBundle](https://github.com/Troopers/AsseticInjectorBundle)
 
@@ -66,87 +130,3 @@ This is the list of available injections :
 - `alertify-codrops-notification`
 - `alertify-pushjs` - *only for javascripts injection*
 - `foot` : Add confirm.js and alertify.js - *only for javascripts injection*
-
-#### Add the library yourself
-
-This is how embed libraries in your views without AsseticInjectorBundle :
-
-- For **Toastr** :
-```twig
-{% stylesheets
-    '@TroopersAlertifyBundle/Resources/public/toastr/css/toastr.css'
-%}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-{% endstylesheets %}
-
-{% javascripts
-    '@TroopersAlertifyBundle/Resources/public/toastr/js/toastr.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-
-```
-
-- For **PushJs** :
-```twig
-{% javascripts
-    '@TroopersAlertifyBundle/Resources/public/push.js/push.min.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-
-```
-
-- For **noty** :
-```twig
-{% stylesheets
-    '@TroopersAlertifyBundle/Resources/public/noty/css/jquery.noty.css'
-%}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-{% endstylesheets %}
-
-{% javascripts
-    '@TroopersAlertifyBundle/Resources/public/noty/js/jquery.noty.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-
-```
-
-- For **notie** :
-```twig
-{% stylesheets
-    '@TroopersAlertifyBundle/Resources/public/notie/notie.css'
-%}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-{% endstylesheets %}
-
-{% javascripts
-    '@TroopersAlertifyBundle/Resources/public/notie/notie.js'
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-
-```
-
-- For **Codrops notification**
-```twig
-{% stylesheets
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/css/ns-default.css",
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/css/ns-style-bar.css",
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/css/ns-style-attached.css",
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/css/ns-style-growl.css",
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/css/ns-style-other.css"
-%}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-{% endstylesheets %}
-
-{% javascripts
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/js/classie.js",
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/js/modernizr.custom.js",
-    "@TroopersAlertifyBundle/Resources/public/codrops-notification/js/notificationFx.js"
-%}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-```
-
